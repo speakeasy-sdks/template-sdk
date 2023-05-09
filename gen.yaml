@@ -3,7 +3,7 @@ generation:
   telemetryEnabled: false
   sdkClassName: SDK
   singleOpPerTag: true
-go:
+typescript:
   maxMethodParams: 4
-  version: 0.6.0
-  packageName: github.com/speakeasy-sdks/template-sdk
+  version: 0.1.0
+  packageName: speakeasy-sdks/template-sdk
