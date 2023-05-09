@@ -1,9 +1,9 @@
-name: Publish Go SDK
+name: Publish
 
 on:
   push: # Will trigger when the RELEASES.md file is updated by the merged PR from the generation workflow
     paths:
-      - "./sdks/go/RELEASES.md"
+      - "RELEASES.md"
     branches:
       - main
 
