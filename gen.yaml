@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 generation:
   telemetryEnabled: false
-  sdkClassName: speakeasy
-  sdkFlattening: true
+  sdkClassName: SDK
   singleOpPerTag: true
 go:
+  maxMethodParams: 4
   version: 0.6.0
-  packageName: github.com/codatio/client-sdk-go/accounting
+  packageName: github.com/speakeasy-sdks/template-sdk
