@@ -16,6 +16,13 @@ src/petstore/models/operations/__init__.py
 src/petstore/models/shared/error.py
 src/petstore/models/shared/pet.py
 src/petstore/models/shared/__init__.py
-docs/petstore/README.md
-docs/pets/README.md
+docs/sdks/petstore/README.md
+docs/sdks/pets/README.md
 USAGE.md
+docs/models/operations/createpetsresponse.md
+docs/models/operations/listpetsrequest.md
+docs/models/operations/listpetsresponse.md
+docs/models/operations/showpetbyidrequest.md
+docs/models/operations/showpetbyidresponse.md
+docs/models/shared/error.md
+docs/models/shared/pet.md

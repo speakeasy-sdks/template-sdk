@@ -28,11 +28,11 @@ if res.status_code == 200:
 ## Available Resources and Operations
 
 
-### [pets](docs/pets/README.md)
+### [pets](docs/sdks/pets/README.md)
 
-* [create_pets](docs/pets/README.md#create_pets) - Create a pet
-* [list_pets](docs/pets/README.md#list_pets) - List all pets
-* [show_pet_by_id](docs/pets/README.md#show_pet_by_id) - Info for a specific pet
+* [create_pets](docs/sdks/pets/README.md#create_pets) - Create a pet
+* [list_pets](docs/sdks/pets/README.md#list_pets) - List all pets
+* [show_pet_by_id](docs/sdks/pets/README.md#show_pet_by_id) - Info for a specific pet
 <!-- End SDK Available Operations -->
 
 ### Maturity

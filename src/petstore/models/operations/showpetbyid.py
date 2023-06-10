@@ -8,16 +8,18 @@ from ..shared import pet as shared_pet
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ShowPetByIDRequest:
-    
     pet_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'petId', 'style': 'simple', 'explode': False }})
     r"""The id of the pet to retrieve"""
     
 
+
+
+
 @dataclasses.dataclass
 class ShowPetByIDResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error: Optional[shared_error.Error] = dataclasses.field(default=None)
@@ -26,3 +28,4 @@ class ShowPetByIDResponse:
     r"""Expected response to a valid request"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+
