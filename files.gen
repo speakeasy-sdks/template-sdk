@@ -1,7 +1,6 @@
 src/petstore/sdkconfiguration.py
 src/petstore/pets.py
 src/petstore/sdk.py
-.gitignore
 pylintrc
 setup.py
 src/petstore/__init__.py
