@@ -10,6 +10,8 @@ pip install git+https://github.com/speakeasy-sdks/template-sdk.git
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import petstore
 
