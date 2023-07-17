@@ -5,6 +5,7 @@ pylintrc
 setup.py
 src/petstore/__init__.py
 src/petstore/models/__init__.py
+src/petstore/models/errors/sdkerror.py
 src/petstore/utils/__init__.py
 src/petstore/utils/retries.py
 src/petstore/utils/utils.py
