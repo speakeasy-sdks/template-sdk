@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from petstore import utils
-from petstore.models import operations, shared
+from petstore.models import errors, operations, shared
 from typing import Optional
 
 class Pets:

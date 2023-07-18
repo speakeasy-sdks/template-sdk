@@ -16,6 +16,7 @@ src/petstore/models/operations/__init__.py
 src/petstore/models/shared/error.py
 src/petstore/models/shared/pet.py
 src/petstore/models/shared/__init__.py
+src/petstore/models/errors/__init__.py
 docs/sdks/petstore/README.md
 docs/sdks/pets/README.md
 USAGE.md
