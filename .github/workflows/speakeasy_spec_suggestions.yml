@@ -1,0 +1,23 @@
+name: Suggest Petstore OpenAPI Document
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow to suggest OpenAPI document
+    inputs:
+      force:
+        description: "Force suggestion of OpenAPI document"
+        type: boolean
+        default: false
+
+jobs:
+  suggest:
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-suggestion.yaml@v14.25 # Import the sdk generation workflow which will handle the generation of the SDKs and publishing to the package managers in 'direct' mode.
+    with:
+      speakeasy_version: latest
+      openapi_docs: |
+        - https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.yaml
+      openapi_doc_output: ./petstore.yaml
+      max_suggestions: 5
+    secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+      openai_api_key: ${{ secrets.OPENAI_API_KEY }}
