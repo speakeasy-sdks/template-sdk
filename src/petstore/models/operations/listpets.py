@@ -8,16 +8,18 @@ from ..shared import pet as shared_pet
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListPetsRequest:
-    
     limit: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
     r"""How many items to return at one time (max 100)"""
     
 
+
+
+
 @dataclasses.dataclass
 class ListPetsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error: Optional[shared_error.Error] = dataclasses.field(default=None)
@@ -27,3 +29,4 @@ class ListPetsResponse:
     r"""A paged array of pets"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+
