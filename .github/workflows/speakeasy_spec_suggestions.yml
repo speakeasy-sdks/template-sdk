@@ -14,7 +14,7 @@ jobs:
     with:
       speakeasy_version: latest
       openapi_docs: |
-        - https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.yaml
+        - ./petstore.yaml
       openapi_doc_output: |
         - ./petstore.yaml
       max_suggestions: 5
