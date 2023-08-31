@@ -14,9 +14,8 @@ jobs:
     with:
       speakeasy_version: latest
       openapi_docs: |
-        - ./petstore.yaml
-      openapi_doc_output: |
-        - ./petstore.yaml
+        - .openapi.yaml
+      openapi_doc_output: ./openapi.yaml
       max_suggestions: 5
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
