@@ -93,6 +93,7 @@ paths:
   /drinks:
     get:
       x-speakeasy-usage-example: true
+      title: List the drinks
       operationId: listDrinks
       summary: Get a list of drinks.
       description: Get a list of drinks, if authenticated this will include stock levels and product codes otherwise it will only include public information.
@@ -101,7 +102,7 @@ paths:
       tags:
         - drinks
       parameters:
-        - name: type
+        - name: drinkType
           in: query
           description: The type of drink to filter by. If not provided all drinks will be returned.
           required: false
