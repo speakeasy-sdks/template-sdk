@@ -18,14 +18,22 @@ pip install git+https://github.com/speakeasy-sdks/template-sdk.git
 
 ```python
 import petstore
+from petstore.models import operations, shared
 
+s = petstore.Petstore(
+    security=shared.Security(
+        api_key="",
+    ),
+)
 
-s = petstore.Petstore()
+req = operations.AuthenticateRequestBody(
+    password='corrupti',
+    username='Larue_Rau85',
+)
 
+res = s.authentication.authenticate(req)
 
-res = s.pets.create_pets()
-
-if res.status_code == 200:
+if res.authenticate_200_application_json_object is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
@@ -34,11 +42,26 @@ if res.status_code == 200:
 ## Available Resources and Operations
 
 
-### [pets](docs/sdks/pets/README.md)
+### [authentication](docs/sdks/authentication/README.md)
 
-* [create_pets](docs/sdks/pets/README.md#create_pets) - Create a pet
-* [list_pets](docs/sdks/pets/README.md#list_pets) - List all pets
-* [show_pet_by_id](docs/sdks/pets/README.md#show_pet_by_id) - Info for a specific pet
+* [authenticate](docs/sdks/authentication/README.md#authenticate) - Authenticate with the API by providing a username and password.
+
+### [config](docs/sdks/config/README.md)
+
+* [subscribe_to_webhooks](docs/sdks/config/README.md#subscribe_to_webhooks) - Subscribe to webhooks.
+
+### [drinks](docs/sdks/drinks/README.md)
+
+* [get_drink](docs/sdks/drinks/README.md#get_drink) - Get a drink.
+* [list_drinks](docs/sdks/drinks/README.md#list_drinks) - Get a list of drinks.
+
+### [ingredients](docs/sdks/ingredients/README.md)
+
+* [list_ingredients](docs/sdks/ingredients/README.md#list_ingredients) - Get a list of ingredients.
+
+### [orders](docs/sdks/orders/README.md)
+
+* [create_order](docs/sdks/orders/README.md#create_order) - Create an order.
 <!-- End SDK Available Operations -->
 
 ### Maturity
