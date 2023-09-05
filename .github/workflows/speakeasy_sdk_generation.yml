@@ -22,7 +22,7 @@ jobs:
         - python
       mode: pr
       openapi_docs: |
-        - https://raw.githubusercontent.com/speakeasy-api/openapi-reference-documentation/initial-draft/openapi.yaml?token=GHSAT0AAAAAAB62PGL7DJKX2JGILUY3VPZSZHQVHOA
+        - ./openapi.yaml
       speakeasy_version: latest
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
