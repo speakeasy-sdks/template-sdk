@@ -3,29 +3,28 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import drink as shared_drink
 from ..shared import error as shared_error
-from ..shared import pet as shared_pet
 from typing import Optional
 
 
 
 @dataclasses.dataclass
-class ShowPetByIDRequest:
-    pet_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'petId', 'style': 'simple', 'explode': False }})
-    r"""The id of the pet to retrieve"""
+class GetDrinkRequest:
+    name: str = dataclasses.field(metadata={'path_param': { 'field_name': 'name', 'style': 'simple', 'explode': False }})
     
 
 
 
 
 @dataclasses.dataclass
-class ShowPetByIDResponse:
+class GetDrinkResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    drink: Optional[shared_drink.Drink] = dataclasses.field(default=None)
+    r"""A drink."""
     error: Optional[shared_error.Error] = dataclasses.field(default=None)
-    r"""unexpected error"""
-    pet: Optional[shared_pet.Pet] = dataclasses.field(default=None)
-    r"""Expected response to a valid request"""
+    r"""An unknown error occurred interacting with the API."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
 
