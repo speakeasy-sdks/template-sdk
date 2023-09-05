@@ -1,4 +1,4 @@
-name: Suggest Petstore OpenAPI Document
+name: Suggest
 
 on:
   workflow_dispatch: # Allows manual triggering of the workflow to suggest OpenAPI document
