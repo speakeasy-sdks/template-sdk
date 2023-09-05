@@ -18,10 +18,13 @@ externalDocs:
 servers:
   - url: https://speakeasy.bar
     description: The production server.
+    x-speakeasy-server-id: prod
   - url: https://staging.speakeasy.bar
     description: The staging server.
+    x-speakeasy-server-id: staging
   - url: https://{organization}.{environment}.speakeasy.bar
     description: A per-organization and per-environment API.
+    x-speakeasy-server-id: customer
     variables:
       organization:
         description: The organization name. Defaults to a generic organization.
@@ -45,7 +48,13 @@ tags:
   - name: authentication
     description: The authentication endpoints.
   - name: config
+
 paths:
+
+  x-speakeasy-errors:
+    statusCodes: # Defines status codes to handle as errors for all operations
+      - 4XX # Wildcard to handle all status codes in the 400-499 range
+      - 5XX
   /authenticate:
     post:
       operationId: authenticate
@@ -131,12 +140,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Drink"
-        links:
-          listIngredients:
-            operationId: listIngredients
-            parameters:
-              ingredients: $response.body#/ingredients
-            description: The list of ingredients returned by the `getDrink` operation can be used as an input to the `listIngredients` operation, to retrieve additional details about the ingredients required to make the drink.
         "5XX":
           $ref: "#/components/responses/APIError"
         default:
@@ -237,7 +240,7 @@ paths:
       summary: Subscribe to webhooks.
       description: Subscribe to webhooks.
       tags:
-        - configuration
+        - config
       requestBody:
         required: true
         content:
