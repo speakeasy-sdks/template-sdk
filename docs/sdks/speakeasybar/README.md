@@ -1,4 +1,4 @@
-# Petstore SDK
+# Speakeasybar SDK
 
 ## Overview
 

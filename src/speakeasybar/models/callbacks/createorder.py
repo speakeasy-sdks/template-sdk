@@ -7,7 +7,7 @@ from ..shared import apierror as shared_apierror
 from ..shared import error as shared_error
 from ..shared import order as shared_order
 from dataclasses_json import Undefined, dataclass_json
-from petstore import utils
+from speakeasybar import utils
 from typing import Optional
 
 

@@ -8,7 +8,7 @@ from ..shared import drink as shared_drink
 from ..shared import error as shared_error
 from ..shared import ingredient as shared_ingredient
 from dataclasses_json import Undefined, dataclass_json
-from petstore import utils
+from speakeasybar import utils
 from typing import Optional
 
 

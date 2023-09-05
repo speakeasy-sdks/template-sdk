@@ -15,25 +15,20 @@ Get a list of ingredients, if authenticated this will include stock levels and p
 ### Example Usage
 
 ```python
-import petstore
-from petstore.models import operations, shared
+import speakeasybar
+from speakeasybar.models import operations, shared
 
-s = petstore.Petstore(
+s = speakeasybar.Speakeasybar(
     security=shared.Security(
         api_key="",
     ),
 )
 
-req = operations.ListIngredientsRequest(
-    ingredients=[
-        'placeat',
-        'voluptatum',
-        'iusto',
-        'excepturi',
-    ],
-)
 
-res = s.ingredients.list_ingredients(req)
+res = s.ingredients.list_ingredients(ingredients=[
+    'magnam',
+    'debitis',
+])
 
 if res.ingredients is not None:
     # handle response
@@ -41,9 +36,9 @@ if res.ingredients is not None:
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.ListIngredientsRequest](../../models/operations/listingredientsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `ingredients`                                                                         | list[*str*]                                                                           | :heavy_minus_sign:                                                                    | A list of ingredients to filter by. If not provided all ingredients will be returned. |
 
 
 ### Response

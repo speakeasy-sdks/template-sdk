@@ -15,18 +15,18 @@ Authenticate with the API by providing a username and password.
 ### Example Usage
 
 ```python
-import petstore
-from petstore.models import operations, shared
+import speakeasybar
+from speakeasybar.models import operations, shared
 
-s = petstore.Petstore(
+s = speakeasybar.Speakeasybar(
     security=shared.Security(
         api_key="",
     ),
 )
 
 req = operations.AuthenticateRequestBody(
-    password='corrupti',
-    username='Roselyn_Kassulke',
+    password='provident',
+    username='Micheal_Sporer',
 )
 
 res = s.authentication.authenticate(req)

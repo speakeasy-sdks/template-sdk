@@ -7,10 +7,10 @@ from .drinks import Drinks
 from .ingredients import Ingredients
 from .orders import Orders
 from .sdkconfiguration import SDKConfiguration, ServerEnvironment
-from petstore import utils
-from petstore.models import shared
+from speakeasybar import utils
+from speakeasybar.models import shared
 
-class Petstore:
+class Speakeasybar:
     r"""The Speakeasy Bar: A bar that serves drinks.
     A secret underground bar that serves drinks to those in the know.
     https://docs.speakeasy.bar - The Speakeasy Bar Documentation.

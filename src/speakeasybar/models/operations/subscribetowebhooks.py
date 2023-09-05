@@ -6,7 +6,7 @@ import requests as requests_http
 from ..shared import error as shared_error
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
-from petstore import utils
+from speakeasybar import utils
 from typing import Optional
 
 class SubscribeToWebhooksRequestBodyWebhook(str, Enum):

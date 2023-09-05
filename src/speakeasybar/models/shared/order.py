@@ -5,7 +5,7 @@ import dataclasses
 from ..shared import ordertype as shared_ordertype
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
-from petstore import utils
+from speakeasybar import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
