@@ -17,23 +17,19 @@ pip install git+https://github.com/speakeasy-sdks/template-sdk.git
 
 
 ```python
-import petstore
-from petstore.models import operations, shared
+import speakeasybar
+from speakeasybar.models import operations, shared
 
-s = petstore.Petstore(
+s = speakeasybar.Speakeasybar(
     security=shared.Security(
         api_key="",
     ),
 )
 
-req = operations.AuthenticateRequestBody(
-    password='corrupti',
-    username='Larue_Rau85',
-)
 
-res = s.authentication.authenticate(req)
+res = s.drinks.list_drinks(drink_type=shared.DrinkType.WINE)
 
-if res.authenticate_200_application_json_object is not None:
+if res.drinks is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

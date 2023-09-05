@@ -12,7 +12,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class ListDrinksRequest:
-    type: Optional[shared_drinktype.DrinkType] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'type', 'style': 'form', 'explode': True }})
+    drink_type: Optional[shared_drinktype.DrinkType] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'drinkType', 'style': 'form', 'explode': True }})
     r"""The type of drink to filter by. If not provided all drinks will be returned."""
     
 

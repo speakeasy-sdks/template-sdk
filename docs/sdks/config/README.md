@@ -11,10 +11,10 @@ Subscribe to webhooks.
 ### Example Usage
 
 ```python
-import petstore
-from petstore.models import operations, shared
+import speakeasybar
+from speakeasybar.models import operations, shared
 
-s = petstore.Petstore(
+s = speakeasybar.Speakeasybar(
     security=shared.Security(
         api_key="",
     ),
@@ -22,11 +22,15 @@ s = petstore.Petstore(
 
 req = [
     operations.SubscribeToWebhooksRequestBody(
-        url='iure',
+        url='illum',
         webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
     ),
     operations.SubscribeToWebhooksRequestBody(
-        url='magnam',
+        url='vel',
+        webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
+    ),
+    operations.SubscribeToWebhooksRequestBody(
+        url='error',
         webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
     ),
 ]
