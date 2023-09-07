@@ -22,15 +22,7 @@ s = speakeasybar.Speakeasybar(
 
 req = [
     operations.SubscribeToWebhooksRequestBody(
-        url='illum',
-        webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
-    ),
-    operations.SubscribeToWebhooksRequestBody(
-        url='vel',
-        webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
-    ),
-    operations.SubscribeToWebhooksRequestBody(
-        url='error',
+        url='corrupti',
         webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
     ),
 ]

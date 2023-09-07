@@ -66,6 +66,7 @@ pip install git+https://github.com/speakeasy-sdks/template-sdk.git
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 
+
 ```python
 import speakeasybar
 from speakeasybar.models import operations, shared
@@ -75,6 +76,7 @@ s = speakeasybar.Speakeasybar(
         api_key="",
     ),
 )
+
 
 res = s.drinks.list_drinks(drink_type=shared.DrinkType.WINE)
 

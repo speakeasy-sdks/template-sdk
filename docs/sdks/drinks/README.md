@@ -26,7 +26,7 @@ s = speakeasybar.Speakeasybar(
 )
 
 
-res = s.drinks.get_drink(name='deserunt')
+res = s.drinks.get_drink(name='illum')
 
 if res.drink is not None:
     # handle response
