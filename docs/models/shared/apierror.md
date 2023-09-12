@@ -1,7 +1,5 @@
 # APIError
 
-An error occurred interacting with the API.
-
 
 ## Fields
 

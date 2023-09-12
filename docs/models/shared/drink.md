@@ -1,7 +1,5 @@
 # Drink
 
-A drink.
-
 
 ## Fields
 

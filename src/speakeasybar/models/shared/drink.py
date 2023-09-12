@@ -28,7 +28,6 @@ class DrinkInput:
 
 @dataclasses.dataclass
 class Drink:
-    r"""A drink."""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""The name of the drink."""
     price: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('price') }})
