@@ -1,4 +1,4 @@
-# drinks
+# Drinks
 
 ## Overview
 

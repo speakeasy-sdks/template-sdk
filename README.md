@@ -89,24 +89,24 @@ if res.drinks is not None:
 ## Available Resources and Operations
 
 
-### [authentication](docs/sdks/authentication/README.md)
+### [Authentication](docs/sdks/authentication/README.md)
 
 * [authenticate](docs/sdks/authentication/README.md#authenticate) - Authenticate with the API by providing a username and password.
 
-### [config](docs/sdks/config/README.md)
+### [Config](docs/sdks/config/README.md)
 
 * [subscribe_to_webhooks](docs/sdks/config/README.md#subscribe_to_webhooks) - Subscribe to webhooks.
 
-### [drinks](docs/sdks/drinks/README.md)
+### [Drinks](docs/sdks/drinks/README.md)
 
 * [get_drink](docs/sdks/drinks/README.md#get_drink) - Get a drink.
 * [list_drinks](docs/sdks/drinks/README.md#list_drinks) - Get a list of drinks.
 
-### [ingredients](docs/sdks/ingredients/README.md)
+### [Ingredients](docs/sdks/ingredients/README.md)
 
 * [list_ingredients](docs/sdks/ingredients/README.md#list_ingredients) - Get a list of ingredients.
 
-### [orders](docs/sdks/orders/README.md)
+### [Orders](docs/sdks/orders/README.md)
 
 * [create_order](docs/sdks/orders/README.md#create_order) - Create an order.
 <!-- End SDK Available Operations -->

@@ -1,4 +1,4 @@
-# ingredients
+# Ingredients
 
 ## Overview
 
