@@ -26,7 +26,7 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'error',
+    'suscipit',
 ])
 
 if res.ingredients is not None:

@@ -36,12 +36,6 @@ src/speakeasybar/models/callbacks/createorder.py
 src/speakeasybar/models/callbacks/__init__.py
 src/speakeasybar/models/webhooks/stockupdate.py
 src/speakeasybar/models/webhooks/__init__.py
-docs/sdks/speakeasybar/README.md
-docs/sdks/authentication/README.md
-docs/sdks/config/README.md
-docs/sdks/drinks/README.md
-docs/sdks/ingredients/README.md
-docs/sdks/orders/README.md
 USAGE.md
 docs/models/operations/authenticaterequestbody.md
 docs/models/operations/authenticate200applicationjson.md
@@ -75,4 +69,10 @@ docs/models/callbacks/createorderorderupdateresponse.md
 docs/models/callbacks/createorderorderupdaterequestbodyinput.md
 docs/models/webhooks/stockupdateresponse.md
 docs/models/webhooks/stockupdaterequestbodyinput.md
+docs/sdks/speakeasybar/README.md
+docs/sdks/authentication/README.md
+docs/sdks/config/README.md
+docs/sdks/drinks/README.md
+docs/sdks/ingredients/README.md
+docs/sdks/orders/README.md
 .gitattributes

@@ -26,7 +26,7 @@ s = speakeasybar.Speakeasybar(
 )
 
 
-res = s.drinks.get_drink(name='illum')
+res = s.drinks.get_drink(name='error')
 
 if res.drink is not None:
     # handle response
@@ -61,7 +61,7 @@ s = speakeasybar.Speakeasybar(
 )
 
 
-res = s.drinks.list_drinks(drink_type=shared.DrinkType.BEER)
+res = s.drinks.list_drinks(drink_type=shared.DrinkType.WINE)
 
 if res.drinks is not None:
     # handle response
