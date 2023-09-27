@@ -87,24 +87,24 @@ if res.drinks is not None:
 ## Available Resources and Operations
 
 
-### [Authentication](docs/sdks/authentication/README.md)
+### [authentication](docs/sdks/authentication/README.md)
 
 * [authenticate](docs/sdks/authentication/README.md#authenticate) - Authenticate with the API by providing a username and password.
 
-### [Config](docs/sdks/config/README.md)
+### [config](docs/sdks/config/README.md)
 
 * [subscribe_to_webhooks](docs/sdks/config/README.md#subscribe_to_webhooks) - Subscribe to webhooks.
 
-### [Drinks](docs/sdks/drinks/README.md)
+### [drinks](docs/sdks/drinks/README.md)
 
 * [get_drink](docs/sdks/drinks/README.md#get_drink) - Get a drink.
 * [list_drinks](docs/sdks/drinks/README.md#list_drinks) - Get a list of drinks.
 
-### [Ingredients](docs/sdks/ingredients/README.md)
+### [ingredients](docs/sdks/ingredients/README.md)
 
 * [list_ingredients](docs/sdks/ingredients/README.md#list_ingredients) - Get a list of ingredients.
 
-### [Orders](docs/sdks/orders/README.md)
+### [orders](docs/sdks/orders/README.md)
 
 * [create_order](docs/sdks/orders/README.md#create_order) - Create an order.
 <!-- End SDK Available Operations -->
@@ -112,8 +112,6 @@ if res.drinks is not None:
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -127,8 +125,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
