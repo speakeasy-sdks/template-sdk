@@ -9,7 +9,7 @@
 **👀** This template repository is designed to boostrap a [Speakeasy managed SDK repository](https://speakeasyapi.dev/docs/create-client-sdks/) using Github's repository clone feature. Once this repository is setup it will automatically keep your SDK up to date and published to a package manager. 
 
 
-### Creating a SDK
+### Creating an SDK
 
 1. To get started simply clone the repository by clicking on the "Use template" button and give it a name.
    
