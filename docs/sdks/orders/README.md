@@ -28,11 +28,11 @@ s = speakeasybar.Speakeasybar(
 
 res = s.orders.create_order(request_body=[
     shared.OrderInput(
-        product_code='NAC-3F2D1',
-        quantity=297534,
-        type=shared.OrderType.INGREDIENT,
+        product_code='APM-1F2D3',
+        quantity=26535,
+        type=shared.OrderType.DRINK,
     ),
-], callback_url='ipsa')
+], callback_url='efficient')
 
 if res.order is not None:
     # handle response

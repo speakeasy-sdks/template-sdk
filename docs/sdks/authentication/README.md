@@ -26,8 +26,8 @@ s = speakeasybar.Speakeasybar(
 )
 
 req = operations.AuthenticateRequestBody(
-    password='distinctio',
-    username='Rosalinda_Mitchell84',
+    password='Nxq_X5HXg1lXJa5',
+    username='Asa_Stamm77',
 )
 
 res = s.authentication.authenticate(req)

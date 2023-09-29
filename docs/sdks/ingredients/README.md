@@ -27,7 +27,7 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'suscipit',
+    'Cloned',
 ])
 
 if res.ingredients is not None:

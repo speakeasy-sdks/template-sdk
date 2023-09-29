@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `url`                                                                                                               | *Optional[str]*                                                                                                     | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |
-| `webhook`                                                                                                           | [Optional[SubscribeToWebhooksRequestBodyWebhook]](../../models/operations/subscribetowebhooksrequestbodywebhook.md) | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `url`              | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `webhook`          | *Optional[str]*    | :heavy_minus_sign: | N/A                |
