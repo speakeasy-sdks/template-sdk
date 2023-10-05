@@ -40,6 +40,7 @@ USAGE.md
 docs/models/operations/authenticaterequestbody.md
 docs/models/operations/authenticate200applicationjson.md
 docs/models/operations/authenticateresponse.md
+docs/models/operations/subscribetowebhooksrequestbodywebhook.md
 docs/models/operations/subscribetowebhooksrequestbody.md
 docs/models/operations/subscribetowebhooksresponse.md
 docs/models/operations/getdrinkrequest.md

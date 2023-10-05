@@ -24,7 +24,7 @@ s = speakeasybar.Speakeasybar(
 req = [
     operations.SubscribeToWebhooksRequestBody(
         url='https://well-worn-diver.biz',
-        webhook='gosh Northeast',
+        webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
     ),
 ]
 
