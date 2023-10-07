@@ -22,10 +22,7 @@ s = speakeasybar.Speakeasybar(
 )
 
 req = [
-    operations.SubscribeToWebhooksRequestBody(
-        url='https://well-worn-diver.biz',
-        webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
-    ),
+    operations.SubscribeToWebhooksRequestBody(),
 ]
 
 res = s.config.subscribe_to_webhooks(req)

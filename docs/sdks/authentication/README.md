@@ -25,10 +25,7 @@ s = speakeasybar.Speakeasybar(
     ),
 )
 
-req = operations.AuthenticateRequestBody(
-    password='Nxq_X5HXg1lXJa5',
-    username='Asa_Stamm77',
-)
+req = operations.AuthenticateRequestBody()
 
 res = s.authentication.authenticate(req)
 
