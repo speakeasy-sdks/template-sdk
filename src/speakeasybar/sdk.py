@@ -28,7 +28,7 @@ class Speakeasybar:
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 api_key: str,
+                 security: shared.Security = None,
                  environment: ServerEnvironment = None,
                  organization: str = None,
                  server: str = None,
@@ -39,8 +39,8 @@ class Speakeasybar:
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
-        :param api_key: The api_key required for authentication
-        :type api_key: str
+        :param security: The security details required for authentication
+        :type security: shared.Security
         :param environment: Allows setting the environment variable for url substitution
         :type environment: sdk.ServerEnvironment
         :param organization: Allows setting the organization variable for url substitution
