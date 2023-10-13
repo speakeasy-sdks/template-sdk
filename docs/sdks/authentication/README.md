@@ -31,6 +31,7 @@ res = s.authentication.authenticate(req)
 
 if res.authenticate_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
