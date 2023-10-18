@@ -11,7 +11,6 @@ from speakeasybar import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateOrderOrderUpdateResponse:
     content_type: str = dataclasses.field()
@@ -29,7 +28,6 @@ class CreateOrderOrderUpdateResponse:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateOrderOrderUpdateRequestBodyInput:
     order: Optional[shared_order.OrderInput] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('order'), 'exclude': lambda f: f is None }})

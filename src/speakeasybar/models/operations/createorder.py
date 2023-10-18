@@ -5,17 +5,15 @@ import dataclasses
 import requests as requests_http
 from ..shared import error as shared_error
 from ..shared import order as shared_order
-from typing import Optional
-
+from typing import List, Optional
 
 
 @dataclasses.dataclass
 class CreateOrderRequest:
-    request_body: list[shared_order.OrderInput] = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    request_body: List[shared_order.OrderInput] = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     callback_url: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'callback_url', 'style': 'form', 'explode': True }})
     r"""The url to call when the order is updated."""
     
-
 
 
 

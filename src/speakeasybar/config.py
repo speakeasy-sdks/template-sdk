@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from speakeasybar import utils
 from speakeasybar.models import errors, operations, shared
-from typing import Optional
+from typing import List, Optional
 
 class Config:
     sdk_configuration: SDKConfiguration
@@ -12,7 +12,7 @@ class Config:
         self.sdk_configuration = sdk_config
         
     
-    def subscribe_to_webhooks(self, request: list[operations.SubscribeToWebhooksRequestBody]) -> operations.SubscribeToWebhooksResponse:
+    def subscribe_to_webhooks(self, request: List[operations.SubscribeToWebhooksRequestBody]) -> operations.SubscribeToWebhooksResponse:
         r"""Subscribe to webhooks.
         Subscribe to webhooks.
         """

@@ -14,13 +14,11 @@ class SubscribeToWebhooksRequestBodyWebhook(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SubscribeToWebhooksRequestBody:
     url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
     webhook: Optional[SubscribeToWebhooksRequestBodyWebhook] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webhook'), 'exclude': lambda f: f is None }})
     
-
 
 
 

@@ -9,6 +9,7 @@ from .orders import Orders
 from .sdkconfiguration import SDKConfiguration, ServerEnvironment
 from speakeasybar import utils
 from speakeasybar.models import shared
+from typing import Dict
 
 class Speakeasybar:
     r"""The Speakeasy Bar: A bar that serves drinks.
@@ -33,7 +34,7 @@ class Speakeasybar:
                  organization: str = None,
                  server: str = None,
                  server_url: str = None,
-                 url_params: dict[str, str] = None,
+                 url_params: Dict[str, str] = None,
                  client: requests_http.Session = None,
                  retry_config: utils.RetryConfig = None
                  ) -> None:
@@ -50,7 +51,7 @@ class Speakeasybar:
         :param server_url: The server URL to use for all operations
         :type server_url: str
         :param url_params: Parameters to optionally template the server URL with
-        :type url_params: dict[str, str]
+        :type url_params: Dict[str, str]
         :param client: The requests.Session HTTP client to use for all operations
         :type client: requests_http.Session
         :param retry_config: The utils.RetryConfig to use globally

@@ -12,7 +12,6 @@ from speakeasybar import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class StockUpdateResponse:
     content_type: str = dataclasses.field()
@@ -30,7 +29,6 @@ class StockUpdateResponse:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class StockUpdateRequestBodyInput:
     drink: Optional[shared_drink.DrinkInput] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('drink'), 'exclude': lambda f: f is None }})

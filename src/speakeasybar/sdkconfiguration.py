@@ -2,9 +2,10 @@
 
 import requests
 from dataclasses import dataclass, field
-
+from typing import Dict, Tuple
 from enum import Enum
 from .utils.retries import RetryConfig
+from .utils import utils
 
 
 SERVER_PROD = 'prod'
@@ -34,17 +35,17 @@ class SDKConfiguration:
     security_client: requests.Session
     server_url: str = ''
     server: str = ''
-    server_defaults: dict[str, dict[str, str]] = field(default_factory=dict)
+    server_defaults: Dict[str, Dict[str, str]] = field(default_factory=Dict)
     language: str = 'python'
     openapi_doc_version: str = '1.0.0'
-    sdk_version: str = '1.30.2'
-    gen_version: str = '2.154.1'
-    user_agent: str = 'speakeasy-sdk/python 1.30.2 2.154.1 1.0.0 speakeasybar'
+    sdk_version: str = '2.0.0'
+    gen_version: str = '2.161.0'
+    user_agent: str = 'speakeasy-sdk/python 2.0.0 2.161.0 1.0.0 speakeasybar'
     retry_config: RetryConfig = None
 
-    def get_server_details(self) -> tuple[str, dict[str, str]]:
+    def get_server_details(self) -> Tuple[str, Dict[str, str]]:
         if self.server_url:
-            return self.server_url.removesuffix('/'), {}
+            return utils.remove_suffix(self.server_url, '/'), {}
         if not self.server:
             self.server = SERVER_PROD
 

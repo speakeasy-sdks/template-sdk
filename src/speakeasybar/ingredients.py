@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from speakeasybar import utils
 from speakeasybar.models import errors, operations, shared
-from typing import Optional
+from typing import List, Optional
 
 class Ingredients:
     r"""The ingredients endpoints."""
@@ -13,7 +13,7 @@ class Ingredients:
         self.sdk_configuration = sdk_config
         
     
-    def list_ingredients(self, ingredients: Optional[list[str]] = None) -> operations.ListIngredientsResponse:
+    def list_ingredients(self, ingredients: Optional[List[str]] = None) -> operations.ListIngredientsResponse:
         r"""Get a list of ingredients.
         Get a list of ingredients, if authenticated this will include stock levels and product codes otherwise it will only include public information.
         """
@@ -38,7 +38,7 @@ class Ingredients:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.Ingredient]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[shared.Ingredient]])
                 res.ingredients = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)

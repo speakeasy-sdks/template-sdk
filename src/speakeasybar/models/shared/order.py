@@ -9,7 +9,6 @@ from speakeasybar import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class OrderInput:
     r"""An order for a drink or ingredient."""
@@ -30,7 +29,6 @@ class OrderStatus(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Order:
     r"""An order for a drink or ingredient."""

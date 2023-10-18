@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from speakeasybar import utils
 from speakeasybar.models import errors, operations, shared
-from typing import Optional
+from typing import List, Optional
 
 class Orders:
     r"""The orders endpoints."""
@@ -13,7 +13,7 @@ class Orders:
         self.sdk_configuration = sdk_config
         
     
-    def create_order(self, request_body: list[shared.OrderInput], callback_url: Optional[str] = None) -> operations.CreateOrderResponse:
+    def create_order(self, request_body: List[shared.OrderInput], callback_url: Optional[str] = None) -> operations.CreateOrderResponse:
         r"""Create an order.
         Create an order for a drink.
         """
