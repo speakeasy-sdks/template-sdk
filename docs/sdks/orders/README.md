@@ -32,7 +32,7 @@ res = s.orders.create_order(request_body=[
         quantity=26535,
         type=shared.OrderType.DRINK,
     ),
-], callback_url='efficient')
+], callback_url='string')
 
 if res.order is not None:
     # handle response

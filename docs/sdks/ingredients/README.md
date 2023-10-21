@@ -27,7 +27,7 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'Cloned',
+    'string',
 ])
 
 if res.ingredients is not None:
