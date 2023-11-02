@@ -38,6 +38,7 @@ servers:
           - dev
 security:
   - apiKey: []
+  - bearerAuth: []
 tags:
   - name: drinks
     description: The drinks endpoints.
@@ -57,22 +58,33 @@ paths:
       - 5XX
   /authenticate:
     post:
-      operationId: authenticate
+      operationId: login
       summary: Authenticate with the API by providing a username and password.
-      security: []
+      security:
+        - basicHttp: []
       tags:
         - authentication
+      x-speakeasy-usage-example:
+        title: "Sign in"
+        description: |-
+          First you need to send an authentication request to the API by providing your username and password.
+          In the request body, you should specify the type of token you would like to receive: API key or JSON Web Token.
+          If your credentials are valid, you will receive a token in the response object: `res.object.token: str`.
+        position: 1
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              required:
+                - type
               properties:
-                username:
+                type:
                   type: string
-                password:
-                  type: string
+                  enum:
+                    - apiKey
+                    - JWT
       responses:
         "200":
           description: The api key to use for authenticated endpoints.
@@ -89,15 +101,20 @@ paths:
           $ref: "#/components/responses/APIError"
         default:
           $ref: "#/components/responses/UnknownError"
-
   /drinks:
     get:
-      x-speakeasy-usage-example: true
       operationId: listDrinks
       summary: Get a list of drinks.
       description: Get a list of drinks, if authenticated this will include stock levels and product codes otherwise it will only include public information.
-      security:
-        - {}
+      x-speakeasy-usage-example:
+        title: "Browse available drinks"
+        description: |-
+          Once you are authenticated, you can use the token you received for all other authenticated endpoints.
+          For example, you can filter the list of available drinks by type.
+        position: 2
+      servers:
+        - url: https://speakeasy.bar
+        - url: https://test.speakeasy.bar
       tags:
         - drinks
       parameters:
@@ -120,7 +137,6 @@ paths:
           $ref: "#/components/responses/APIError"
         default:
           $ref: "#/components/responses/UnknownError"
-
   /drink/{name}: #TODO: this should be by product code and we should have search by name
     get:
       operationId: getDrink
@@ -151,6 +167,15 @@ paths:
       operationId: listIngredients
       summary: Get a list of ingredients.
       description: Get a list of ingredients, if authenticated this will include stock levels and product codes otherwise it will only include public information.
+      x-speakeasy-usage-example:
+        description: |-
+          Specifying tags for this extension allows selecting the operation for specific README sections.
+          When specifying tags, both title and description have no effect.
+          Conversely, if the tags array is not provided, the operation will appear in the main SDK Example Usage Section
+          and its relative positioning can be set using the position attribute
+        tags:
+          - servers  # Server Selection
+          - security # Authentication
       tags:
         - ingredients
       parameters:
@@ -185,6 +210,12 @@ paths:
       description: Create an order for a drink.
       tags:
         - orders
+      x-speakeasy-usage-example:
+        title: "Create an order"
+        description: |-
+          When you submit an order, you can include a callback URL along your request.
+          This URL will get called whenever the supplier updates the status of your order.
+        position: 3
       parameters:
         - name: callback_url
           in: query
@@ -242,6 +273,10 @@ paths:
       description: Subscribe to webhooks.
       tags:
         - config
+      x-speakeasy-usage-example:
+        tags:
+          - retries  # Retries
+          - errors   # Error Handling
       requestBody:
         required: true
         content:
@@ -430,6 +465,15 @@ components:
       type: apiKey
       name: Authorization
       in: header
+      x-speakeasy-example: <YOUR_API_KEY>
+    bearerAuth:
+      type: http
+      scheme: bearer
+      x-speakeasy-example: <YOUR_JWT>
+    basicHttp:
+      type: http
+      scheme: basic
+      x-speakeasy-example: <USERNAME>;<PASSWORD>
   responses:
     APIError:
       description: An error occurred interacting with the API.
