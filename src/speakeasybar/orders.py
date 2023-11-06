@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from speakeasybar import utils
 from speakeasybar.models import errors, operations, shared
-from typing import Optional
+from typing import List, Optional
 
 class Orders:
     r"""The orders endpoints."""
@@ -13,7 +13,7 @@ class Orders:
         self.sdk_configuration = sdk_config
         
     
-    def create_order(self, request_body: list[shared.OrderInput], callback_url: Optional[str] = None) -> operations.CreateOrderResponse:
+    def create_order(self, request_body: List[shared.OrderInput], callback_url: Optional[str] = None) -> operations.CreateOrderResponse:
         r"""Create an order.
         Create an order for a drink.
         """
@@ -26,14 +26,14 @@ class Orders:
         
         url = base_url + '/order'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.CreateOrderRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         

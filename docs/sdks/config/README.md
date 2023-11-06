@@ -1,4 +1,5 @@
-# config
+# Config
+(*config*)
 
 ### Available Operations
 
@@ -21,31 +22,21 @@ s = speakeasybar.Speakeasybar(
 )
 
 req = [
-    operations.SubscribeToWebhooksRequestBody(
-        url='illum',
-        webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
-    ),
-    operations.SubscribeToWebhooksRequestBody(
-        url='vel',
-        webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
-    ),
-    operations.SubscribeToWebhooksRequestBody(
-        url='error',
-        webhook=operations.SubscribeToWebhooksRequestBodyWebhook.STOCK_UPDATE,
-    ),
+    operations.SubscribeToWebhooksRequestBody(),
 ]
 
 res = s.config.subscribe_to_webhooks(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
 
 | Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `request`                                                            | [list[operations.SubscribeToWebhooksRequestBody]](../../models//.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `request`                                                            | [List[operations.SubscribeToWebhooksRequestBody]](../../models//.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
 
 
 ### Response

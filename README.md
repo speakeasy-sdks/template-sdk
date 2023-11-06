@@ -65,7 +65,6 @@ pip install git+https://github.com/speakeasy-sdks/template-sdk.git
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
 ```python
 import speakeasybar
 from speakeasybar.models import operations, shared
@@ -76,10 +75,12 @@ s = speakeasybar.Speakeasybar(
     ),
 )
 
-res = s.drinks.list_drinks(drink_type=shared.DrinkType.WINE)
+
+res = s.drinks.list_drinks(drink_type=shared.DrinkType.SPIRIT)
 
 if res.drinks is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->
 
@@ -108,6 +109,148 @@ if res.drinks is not None:
 
 * [create_order](docs/sdks/orders/README.md#create_order) - Create an order.
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+
+## Example
+
+```python
+import speakeasybar
+from speakeasybar.models import operations, shared
+
+s = speakeasybar.Speakeasybar(
+    security=shared.Security(
+        api_key="",
+    ),
+)
+
+req = operations.AuthenticateRequestBody()
+
+res = None
+try:
+    res = s.authentication.authenticate(req)
+
+
+except (APIError) as e:
+    print(e) # handle exception
+
+
+if res.authenticate_200_application_json_object is not None:
+    # handle response
+    pass
+```
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Name
+
+You can override the default server globally by passing a server name to the `server: str` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+
+| Name | Server | Variables |
+| ----- | ------ | --------- |
+| `prod` | `https://speakeasy.bar` | None |
+| `staging` | `https://staging.speakeasy.bar` | None |
+| `customer` | `https://{organization}.{environment}.speakeasy.bar` | `environment` (default is `prod`), `organization` (default is `api`) |
+
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
+ * `environment: ServerEnvironment`
+
+ * `organization: str`
+
+For example:
+
+
+```python
+import speakeasybar
+from speakeasybar.models import operations, shared
+
+s = speakeasybar.Speakeasybar(
+    security=shared.Security(
+        api_key="",
+    ),
+    server="customer"
+)
+
+req = operations.AuthenticateRequestBody()
+
+res = s.authentication.authenticate(req)
+
+if res.authenticate_200_application_json_object is not None:
+    # handle response
+    pass
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```python
+import speakeasybar
+from speakeasybar.models import operations, shared
+
+s = speakeasybar.Speakeasybar(
+    security=shared.Security(
+        api_key="",
+    ),
+    server_url="https://speakeasy.bar"
+)
+
+req = operations.AuthenticateRequestBody()
+
+res = s.authentication.authenticate(req)
+
+if res.authenticate_200_application_json_object is not None:
+    # handle response
+    pass
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```python
+import speakeasybar
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = speakeasybar.Speakeasybar(client: http_client)
+```
+
+
+<!-- End Custom HTTP Client -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

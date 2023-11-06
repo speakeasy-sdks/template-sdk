@@ -10,7 +10,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AuthenticateRequestBody:
     password: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('password'), 'exclude': lambda f: f is None }})
@@ -20,7 +19,6 @@ class AuthenticateRequestBody:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Authenticate200ApplicationJSON:
     r"""The api key to use for authenticated endpoints."""
@@ -29,15 +27,17 @@ class Authenticate200ApplicationJSON:
 
 
 
-
 @dataclasses.dataclass
 class AuthenticateResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     authenticate_200_application_json_object: Optional[Authenticate200ApplicationJSON] = dataclasses.field(default=None)
     r"""The api key to use for authenticated endpoints."""
     error: Optional[shared_error.Error] = dataclasses.field(default=None)
     r"""An unknown error occurred interacting with the API."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

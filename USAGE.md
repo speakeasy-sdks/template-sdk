@@ -12,9 +12,10 @@ s = speakeasybar.Speakeasybar(
 )
 
 
-res = s.drinks.list_drinks(drink_type=shared.DrinkType.WINE)
+res = s.drinks.list_drinks(drink_type=shared.DrinkType.SPIRIT)
 
 if res.drinks is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->
