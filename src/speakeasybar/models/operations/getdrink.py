@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import drink as shared_drink
-from ..shared import error as shared_error
+from ...models.shared import drink as shared_drink
+from ...models.shared import error as shared_error
 from typing import Optional
 
 

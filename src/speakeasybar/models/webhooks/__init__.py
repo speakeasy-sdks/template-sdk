@@ -2,4 +2,4 @@
 
 from .stockupdate import *
 
-__all__ = ["StockUpdateRequestBodyInput","StockUpdateResponse"]
+__all__ = ["StockUpdateRequestBody","StockUpdateResponse"]

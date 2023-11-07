@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import apierror as shared_apierror
-from ..shared import error as shared_error
-from ..shared import order as shared_order
+from ...models.shared import error as shared_error
+from ...models.shared import order as shared_order
 from dataclasses_json import Undefined, dataclass_json
 from speakeasybar import utils
 from typing import Optional
@@ -17,8 +16,6 @@ class CreateOrderOrderUpdateResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    api_error: Optional[shared_apierror.APIError] = dataclasses.field(default=None)
-    r"""An error occurred interacting with the API."""
     error: Optional[shared_error.Error] = dataclasses.field(default=None)
     r"""An unknown error occurred interacting with the API."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -29,7 +26,7 @@ class CreateOrderOrderUpdateResponse:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreateOrderOrderUpdateRequestBodyInput:
+class CreateOrderOrderUpdateRequestBody:
     order: Optional[shared_order.OrderInput] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('order'), 'exclude': lambda f: f is None }})
     r"""An order for a drink or ingredient."""
     

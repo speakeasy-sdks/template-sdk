@@ -1,5 +1,5 @@
 # Orders
-(*orders*)
+(*.orders*)
 
 ## Overview
 

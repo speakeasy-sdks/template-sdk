@@ -1,5 +1,5 @@
 # Config
-(*config*)
+(*.config*)
 
 ### Available Operations
 
@@ -22,7 +22,7 @@ s = speakeasybar.Speakeasybar(
 )
 
 req = [
-    operations.SubscribeToWebhooksRequestBody(),
+    operations.RequestBody(),
 ]
 
 res = s.config.subscribe_to_webhooks(req)
@@ -34,9 +34,9 @@ if res.status_code == 200:
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `request`                                                            | [List[operations.SubscribeToWebhooksRequestBody]](../../models//.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| Parameter                                         | Type                                              | Required                                          | Description                                       |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| `request`                                         | [List[operations.RequestBody]](../../models//.md) | :heavy_check_mark:                                | The request object to use for the request.        |
 
 
 ### Response

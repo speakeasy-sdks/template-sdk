@@ -1,5 +1,5 @@
 # Ingredients
-(*ingredients*)
+(*.ingredients*)
 
 ## Overview
 
@@ -30,7 +30,7 @@ res = s.ingredients.list_ingredients(ingredients=[
     'string',
 ])
 
-if res.ingredients is not None:
+if res.classes is not None:
     # handle response
     pass
 ```

@@ -1,4 +1,4 @@
-# OrderStatus
+# Status
 
 The status of the order.
 

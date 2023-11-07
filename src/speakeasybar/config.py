@@ -12,7 +12,7 @@ class Config:
         self.sdk_configuration = sdk_config
         
     
-    def subscribe_to_webhooks(self, request: List[operations.SubscribeToWebhooksRequestBody]) -> operations.SubscribeToWebhooksResponse:
+    def subscribe_to_webhooks(self, request: List[operations.RequestBody]) -> operations.SubscribeToWebhooksResponse:
         r"""Subscribe to webhooks.
         Subscribe to webhooks.
         """

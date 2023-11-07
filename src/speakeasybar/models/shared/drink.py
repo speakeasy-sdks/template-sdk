@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import drinktype as shared_drinktype
+from .drinktype import DrinkType
 from dataclasses_json import Undefined, dataclass_json
 from speakeasybar import utils
 from typing import Optional
@@ -17,7 +17,7 @@ class DrinkInput:
     r"""The price of one unit of the drink in US cents."""
     product_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('productCode'), 'exclude': lambda f: f is None }})
     r"""The product code of the drink, only available when authenticated."""
-    type: Optional[shared_drinktype.DrinkType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[DrinkType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of drink."""
     
 
@@ -34,7 +34,7 @@ class Drink:
     r"""The product code of the drink, only available when authenticated."""
     stock: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stock'), 'exclude': lambda f: f is None }})
     r"""The number of units of the drink in stock, only available when authenticated."""
-    type: Optional[shared_drinktype.DrinkType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    type: Optional[DrinkType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     r"""The type of drink."""
     
 

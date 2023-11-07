@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import ordertype as shared_ordertype
+from .ordertype import OrderType
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from speakeasybar import utils
@@ -16,12 +16,12 @@ class OrderInput:
     r"""The product code of the drink or ingredient."""
     quantity: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity') }})
     r"""The number of units of the drink or ingredient to order."""
-    type: shared_ordertype.OrderType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: OrderType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of order."""
     
 
 
-class OrderStatus(str, Enum):
+class Status(str, Enum):
     r"""The status of the order."""
     PENDING = 'pending'
     PROCESSING = 'processing'
@@ -36,9 +36,9 @@ class Order:
     r"""The product code of the drink or ingredient."""
     quantity: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity') }})
     r"""The number of units of the drink or ingredient to order."""
-    status: OrderStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: Status = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The status of the order."""
-    type: shared_ordertype.OrderType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: OrderType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of order."""
     
 

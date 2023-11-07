@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import error as shared_error
+from ...models.shared import error as shared_error
 from dataclasses_json import Undefined, dataclass_json
 from speakeasybar import utils
 from typing import Optional
@@ -20,7 +20,7 @@ class AuthenticateRequestBody:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class Authenticate200ApplicationJSON:
+class AuthenticateResponseBody:
     r"""The api key to use for authenticated endpoints."""
     token: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('token'), 'exclude': lambda f: f is None }})
     
@@ -33,10 +33,10 @@ class AuthenticateResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    authenticate_200_application_json_object: Optional[Authenticate200ApplicationJSON] = dataclasses.field(default=None)
-    r"""The api key to use for authenticated endpoints."""
     error: Optional[shared_error.Error] = dataclasses.field(default=None)
     r"""An unknown error occurred interacting with the API."""
+    object: Optional[AuthenticateResponseBody] = dataclasses.field(default=None)
+    r"""The api key to use for authenticated endpoints."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
     

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import ingredienttype as shared_ingredienttype
+from .ingredienttype import IngredientType
 from dataclasses_json import Undefined, dataclass_json
 from speakeasybar import utils
 from typing import Optional
@@ -13,7 +13,7 @@ from typing import Optional
 class IngredientInput:
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""The name of the ingredient."""
-    type: shared_ingredienttype.IngredientType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: IngredientType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of ingredient."""
     product_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('productCode'), 'exclude': lambda f: f is None }})
     r"""The product code of the ingredient, only available when authenticated."""
@@ -26,7 +26,7 @@ class IngredientInput:
 class Ingredient:
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""The name of the ingredient."""
-    type: shared_ingredienttype.IngredientType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: IngredientType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of ingredient."""
     product_code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('productCode'), 'exclude': lambda f: f is None }})
     r"""The product code of the ingredient, only available when authenticated."""

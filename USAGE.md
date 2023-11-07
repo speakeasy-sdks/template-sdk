@@ -14,7 +14,7 @@ s = speakeasybar.Speakeasybar(
 
 res = s.drinks.list_drinks(drink_type=shared.DrinkType.SPIRIT)
 
-if res.drinks is not None:
+if res.classes is not None:
     # handle response
     pass
 ```

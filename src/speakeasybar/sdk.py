@@ -18,13 +18,13 @@ class Speakeasybar:
     """
     authentication: Authentication
     r"""The authentication endpoints."""
-    config: Config
     drinks: Drinks
     r"""The drinks endpoints."""
     ingredients: Ingredients
     r"""The ingredients endpoints."""
     orders: Orders
     r"""The orders endpoints."""
+    config: Config
 
     sdk_configuration: SDKConfiguration
 
@@ -43,9 +43,9 @@ class Speakeasybar:
         :param security: The security details required for authentication
         :type security: shared.Security
         :param environment: Allows setting the environment variable for url substitution
-        :type environment: sdk.ServerEnvironment
+        :type environment: ServerEnvironmentmodels.ServerEnvironment
         :param organization: Allows setting the organization variable for url substitution
-        :type organization: str
+        :type organization: 
         :param server: The server by name to use for all operations
         :type server: str
         :param server_url: The server URL to use for all operations
@@ -84,8 +84,8 @@ class Speakeasybar:
     
     def _init_sdks(self):
         self.authentication = Authentication(self.sdk_configuration)
-        self.config = Config(self.sdk_configuration)
         self.drinks = Drinks(self.sdk_configuration)
         self.ingredients = Ingredients(self.sdk_configuration)
         self.orders = Orders(self.sdk_configuration)
+        self.config = Config(self.sdk_configuration)
     

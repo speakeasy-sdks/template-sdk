@@ -3,9 +3,9 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import drink as shared_drink
-from ..shared import drinktype as shared_drinktype
-from ..shared import error as shared_error
+from ...models.shared import drink as shared_drink
+from ...models.shared import drinktype as shared_drinktype
+from ...models.shared import error as shared_error
 from typing import List, Optional
 
 
@@ -23,7 +23,7 @@ class ListDrinksResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    drinks: Optional[List[shared_drink.Drink]] = dataclasses.field(default=None)
+    classes: Optional[List[shared_drink.Drink]] = dataclasses.field(default=None)
     r"""A list of drinks."""
     error: Optional[shared_error.Error] = dataclasses.field(default=None)
     r"""An unknown error occurred interacting with the API."""

@@ -7,4 +7,4 @@ from .listdrinks import *
 from .listingredients import *
 from .subscribetowebhooks import *
 
-__all__ = ["Authenticate200ApplicationJSON","AuthenticateRequestBody","AuthenticateResponse","CreateOrderRequest","CreateOrderResponse","GetDrinkRequest","GetDrinkResponse","ListDrinksRequest","ListDrinksResponse","ListIngredientsRequest","ListIngredientsResponse","SubscribeToWebhooksRequestBody","SubscribeToWebhooksRequestBodyWebhook","SubscribeToWebhooksResponse"]
+__all__ = ["AuthenticateRequestBody","AuthenticateResponse","AuthenticateResponseBody","CreateOrderRequest","CreateOrderResponse","GetDrinkRequest","GetDrinkResponse","ListDrinksRequest","ListDrinksResponse","ListIngredientsRequest","ListIngredientsResponse","RequestBody","SubscribeToWebhooksResponse","Webhook"]
