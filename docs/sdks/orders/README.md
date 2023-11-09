@@ -1,5 +1,5 @@
 # Orders
-(*.orders*)
+(*orders*)
 
 ## Overview
 
@@ -50,4 +50,9 @@ if res.order is not None:
 ### Response
 
 **[operations.CreateOrderResponse](../../models/operations/createorderresponse.md)**
+### Errors
 
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.APIError  | 5XX              | application/json |
+| errors.SDKError  | 400-600          | */*              |

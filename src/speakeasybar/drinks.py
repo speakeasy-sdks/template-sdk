@@ -13,6 +13,7 @@ class Drinks:
         self.sdk_configuration = sdk_config
         
     
+    
     def get_drink(self, name: str) -> operations.GetDrinkResponse:
         r"""Get a drink.
         Get a drink by name, if authenticated this will include stock levels and product codes otherwise it will only include public information.
@@ -28,7 +29,10 @@ class Drinks:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -60,6 +64,7 @@ class Drinks:
         return res
 
     
+    
     def list_drinks(self, drink_type: Optional[shared.DrinkType] = None) -> operations.ListDrinksResponse:
         r"""Get a list of drinks.
         Get a list of drinks, if authenticated this will include stock levels and product codes otherwise it will only include public information.
@@ -76,7 +81,10 @@ class Drinks:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')

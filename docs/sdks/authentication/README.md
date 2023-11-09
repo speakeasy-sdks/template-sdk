@@ -1,5 +1,5 @@
 # Authentication
-(*.authentication*)
+(*authentication*)
 
 ## Overview
 
@@ -44,4 +44,9 @@ if res.object is not None:
 ### Response
 
 **[operations.AuthenticateResponse](../../models/operations/authenticateresponse.md)**
+### Errors
 
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.APIError  | 5XX              | application/json |
+| errors.SDKError  | 400-600          | */*              |

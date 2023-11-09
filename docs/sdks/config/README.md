@@ -1,5 +1,5 @@
 # Config
-(*.config*)
+(*config*)
 
 ### Available Operations
 
@@ -34,12 +34,17 @@ if res.status_code == 200:
 
 ### Parameters
 
-| Parameter                                         | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `request`                                         | [List[operations.RequestBody]](../../models//.md) | :heavy_check_mark:                                | The request object to use for the request.        |
+| Parameter                                        | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `request`                                        | [List[operations.RequestBody]](../../models/.md) | :heavy_check_mark:                               | The request object to use for the request.       |
 
 
 ### Response
 
 **[operations.SubscribeToWebhooksResponse](../../models/operations/subscribetowebhooksresponse.md)**
+### Errors
 
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.APIError  | 5XX              | application/json |
+| errors.SDKError  | 400-600          | */*              |

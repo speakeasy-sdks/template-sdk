@@ -1,5 +1,5 @@
 # Ingredients
-(*.ingredients*)
+(*ingredients*)
 
 ## Overview
 
@@ -45,4 +45,9 @@ if res.classes is not None:
 ### Response
 
 **[operations.ListIngredientsResponse](../../models/operations/listingredientsresponse.md)**
+### Errors
 
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.APIError  | 5XX              | application/json |
+| errors.SDKError  | 400-600          | */*              |

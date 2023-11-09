@@ -88,24 +88,24 @@ if res.classes is not None:
 ## Available Resources and Operations
 
 
-### [.authentication](docs/sdks/authentication/README.md)
+### [authentication](docs/sdks/authentication/README.md)
 
 * [authenticate](docs/sdks/authentication/README.md#authenticate) - Authenticate with the API by providing a username and password.
 
-### [.drinks](docs/sdks/drinks/README.md)
+### [drinks](docs/sdks/drinks/README.md)
 
 * [get_drink](docs/sdks/drinks/README.md#get_drink) - Get a drink.
 * [list_drinks](docs/sdks/drinks/README.md#list_drinks) - Get a list of drinks.
 
-### [.ingredients](docs/sdks/ingredients/README.md)
+### [ingredients](docs/sdks/ingredients/README.md)
 
 * [list_ingredients](docs/sdks/ingredients/README.md#list_ingredients) - Get a list of ingredients.
 
-### [.orders](docs/sdks/orders/README.md)
+### [orders](docs/sdks/orders/README.md)
 
 * [create_order](docs/sdks/orders/README.md#create_order) - Create an order.
 
-### [.config](docs/sdks/config/README.md)
+### [config](docs/sdks/config/README.md)
 
 * [subscribe_to_webhooks](docs/sdks/config/README.md#subscribe_to_webhooks) - Subscribe to webhooks.
 <!-- End SDK Available Operations -->
@@ -121,7 +121,12 @@ if res.classes is not None:
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.APIError  | 5XX              | application/json |
+| errors.SDKError  | 400-600          | */*              |
 
 
 ## Example
@@ -142,8 +147,9 @@ res = None
 try:
     res = s.authentication.authenticate(req)
 
-
-except (APIError) as e:
+except (errors.APIError) as e:
+    print(e) # handle exception
+except (errors.SDKError) as e:
     print(e) # handle exception
 
 
@@ -230,7 +236,7 @@ if res.object is not None:
 The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
 
 
-For example, you could specify a header for every request that your sdk makes as follows:
+For example, you could specify a header for every request that this sdk makes as follows:
 
 ```python
 import speakeasybar
@@ -245,12 +251,11 @@ s = speakeasybar.Speakeasybar(client: http_client)
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security scheme globally:
+This SDK supports the following security scheme globally:
 
 | Name      | Type      | Scheme    |
 | --------- | --------- | --------- |

@@ -4,7 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ...models.shared import error as shared_error
-from ...models.shared import order as shared_order
+from ...models.shared import order_input as shared_order_input
 from dataclasses_json import Undefined, dataclass_json
 from speakeasybar import utils
 from typing import Optional
@@ -27,7 +27,7 @@ class CreateOrderOrderUpdateResponse:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateOrderOrderUpdateRequestBody:
-    order: Optional[shared_order.OrderInput] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('order'), 'exclude': lambda f: f is None }})
+    order: Optional[shared_order_input.OrderInput] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('order'), 'exclude': lambda f: f is None }})
     r"""An order for a drink or ingredient."""
     
 
