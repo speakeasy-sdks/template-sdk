@@ -1,4 +1,4 @@
-# SubscribeToWebhooksRequestBodyWebhook
+# Webhook
 
 
 ## Values

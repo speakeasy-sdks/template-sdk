@@ -3,11 +3,15 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import drink as shared_drink
-from ..shared import drinktype as shared_drinktype
-from ..shared import error as shared_error
-from typing import Optional
+from ...models.shared import drink as shared_drink
+from ...models.shared import drinktype as shared_drinktype
+from ...models.shared import error as shared_error
+from typing import List, Optional
 
+LIST_DRINKS_SERVERS = [
+	"https://speakeasy.bar",
+	"https://test.speakeasy.bar",
+]
 
 
 @dataclasses.dataclass
@@ -18,15 +22,17 @@ class ListDrinksRequest:
 
 
 
-
 @dataclasses.dataclass
 class ListDrinksResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
-    drinks: Optional[list[shared_drink.Drink]] = dataclasses.field(default=None)
+    r"""HTTP response status code for this operation"""
+    classes: Optional[List[shared_drink.Drink]] = dataclasses.field(default=None)
     r"""A list of drinks."""
     error: Optional[shared_error.Error] = dataclasses.field(default=None)
     r"""An unknown error occurred interacting with the API."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

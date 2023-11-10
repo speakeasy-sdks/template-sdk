@@ -1,7 +1,5 @@
 # Drink
 
-A drink.
-
 
 ## Fields
 
@@ -11,4 +9,4 @@ A drink.
 | `price`                                                                       | *float*                                                                       | :heavy_check_mark:                                                            | The price of one unit of the drink in US cents.                               | 1000                                                                          |
 | `product_code`                                                                | *Optional[str]*                                                               | :heavy_minus_sign:                                                            | The product code of the drink, only available when authenticated.             | AC-A2DF3                                                                      |
 | `stock`                                                                       | *Optional[int]*                                                               | :heavy_minus_sign:                                                            | The number of units of the drink in stock, only available when authenticated. |                                                                               |
-| `type`                                                                        | [Optional[DrinkType]](../../models/shared/drinktype.md)                       | :heavy_minus_sign:                                                            | The type of drink.                                                            |                                                                               |
+| `type`                                                                        | [Optional[shared.DrinkType]](../../models/shared/drinktype.md)                | :heavy_minus_sign:                                                            | The type of drink.                                                            |                                                                               |

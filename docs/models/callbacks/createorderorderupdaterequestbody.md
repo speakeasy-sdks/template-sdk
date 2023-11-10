@@ -1,4 +1,4 @@
-# CreateOrderOrderUpdateRequestBodyInput
+# CreateOrderOrderUpdateRequestBody
 
 
 ## Fields

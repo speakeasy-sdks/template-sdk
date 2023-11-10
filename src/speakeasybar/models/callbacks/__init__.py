@@ -2,4 +2,4 @@
 
 from .createorder import *
 
-__all__ = ["CreateOrderOrderUpdateRequestBodyInput","CreateOrderOrderUpdateResponse"]
+__all__ = ["CreateOrderOrderUpdateRequestBody","CreateOrderOrderUpdateResponse"]
