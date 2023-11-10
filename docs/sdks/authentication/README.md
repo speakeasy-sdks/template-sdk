@@ -1,4 +1,5 @@
-# authentication
+# Authentication
+(*authentication*)
 
 ## Overview
 
@@ -6,9 +7,9 @@ The authentication endpoints.
 
 ### Available Operations
 
-* [authenticate](#authenticate) - Authenticate with the API by providing a username and password.
+* [login](#login) - Authenticate with the API by providing a username and password.
 
-## authenticate
+## login
 
 Authenticate with the API by providing a username and password.
 
@@ -16,33 +17,38 @@ Authenticate with the API by providing a username and password.
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import operations
 
-s = speakeasybar.Speakeasybar(
-    security=shared.Security(
-        api_key="",
-    ),
+s = speakeasybar.Speakeasybar()
+
+req = operations.LoginRequestBody(
+    type=operations.Type.API_KEY,
 )
 
-req = operations.AuthenticateRequestBody(
-    password='provident',
-    username='Micheal_Sporer',
-)
+res = s.authentication.login(req, operations.LoginSecurity(
+    password="<PASSWORD>",
+    username="<USERNAME>",
+))
 
-res = s.authentication.authenticate(req)
-
-if res.authenticate_200_application_json_object is not None:
+if res.object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.AuthenticateRequestBody](../../models/operations/authenticaterequestbody.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [operations.LoginRequestBody](../../models/operations/loginrequestbody.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `security`                                                                 | [operations.LoginSecurity](../../models/operations/loginsecurity.md)       | :heavy_check_mark:                                                         | The security requirements to use for the request.                          |
 
 
 ### Response
 
-**[operations.AuthenticateResponse](../../models/operations/authenticateresponse.md)**
+**[operations.LoginResponse](../../models/operations/loginresponse.md)**
+### Errors
 
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.APIError  | 5XX              | application/json |
+| errors.SDKError  | 400-600          | */*              |

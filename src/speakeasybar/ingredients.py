@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from speakeasybar import utils
 from speakeasybar.models import errors, operations, shared
-from typing import Optional
+from typing import List, Optional
 
 class Ingredients:
     r"""The ingredients endpoints."""
@@ -13,7 +13,8 @@ class Ingredients:
         self.sdk_configuration = sdk_config
         
     
-    def list_ingredients(self, ingredients: Optional[list[str]] = None) -> operations.ListIngredientsResponse:
+    
+    def list_ingredients(self, ingredients: Optional[List[str]] = None) -> operations.ListIngredientsResponse:
         r"""Get a list of ingredients.
         Get a list of ingredients, if authenticated this will include stock levels and product codes otherwise it will only include public information.
         """
@@ -27,9 +28,12 @@ class Ingredients:
         headers = {}
         query_params = utils.get_query_params(operations.ListIngredientsRequest, request)
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -38,8 +42,8 @@ class Ingredients:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.Ingredient]])
-                res.ingredients = out
+                out = utils.unmarshal_json(http_res.text, Optional[List[shared.Ingredient]])
+                res.classes = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500:

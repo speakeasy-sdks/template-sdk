@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from speakeasybar import utils
 from speakeasybar.models import errors, operations, shared
-from typing import Optional
+from typing import List, Optional
 
 class Config:
     sdk_configuration: SDKConfiguration
@@ -12,7 +12,8 @@ class Config:
         self.sdk_configuration = sdk_config
         
     
-    def subscribe_to_webhooks(self, request: list[operations.SubscribeToWebhooksRequestBody]) -> operations.SubscribeToWebhooksResponse:
+    
+    def subscribe_to_webhooks(self, request: List[operations.RequestBody]) -> operations.SubscribeToWebhooksResponse:
         r"""Subscribe to webhooks.
         Subscribe to webhooks.
         """
@@ -20,15 +21,18 @@ class Config:
         
         url = base_url + '/webhooks/subscribe'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')

@@ -1,4 +1,5 @@
-# ingredients
+# Ingredients
+(*ingredients*)
 
 ## Overview
 
@@ -20,28 +21,33 @@ from speakeasybar.models import operations, shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
-        api_key="",
+        api_key="<YOUR_API_KEY>",
     ),
 )
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'magnam',
-    'debitis',
+    'string',
 ])
 
-if res.ingredients is not None:
+if res.classes is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
 
 | Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `ingredients`                                                                         | list[*str*]                                                                           | :heavy_minus_sign:                                                                    | A list of ingredients to filter by. If not provided all ingredients will be returned. |
+| `ingredients`                                                                         | List[*str*]                                                                           | :heavy_minus_sign:                                                                    | A list of ingredients to filter by. If not provided all ingredients will be returned. |
 
 
 ### Response
 
 **[operations.ListIngredientsResponse](../../models/operations/listingredientsresponse.md)**
+### Errors
 
+| Error Object     | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.APIError  | 5XX              | application/json |
+| errors.SDKError  | 400-600          | */*              |
