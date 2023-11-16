@@ -265,7 +265,6 @@ if res.status_code == 200:
     # handle response
     pass
 ```
-
 <!-- End Error Handling -->
 
 
@@ -380,7 +379,6 @@ s = speakeasybar.Speakeasybar(client: http_client)
 
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes
