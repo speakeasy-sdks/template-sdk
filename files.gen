@@ -12,6 +12,7 @@ src/speakeasybar/utils/__init__.py
 src/speakeasybar/utils/retries.py
 src/speakeasybar/utils/utils.py
 src/speakeasybar/models/errors/sdkerror.py
+tests/helpers.py
 src/speakeasybar/models/operations/login.py
 src/speakeasybar/models/operations/getdrink.py
 src/speakeasybar/models/operations/listdrinks.py
