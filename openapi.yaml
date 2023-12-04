@@ -170,11 +170,12 @@ paths:
       x-speakeasy-usage-example:
         description: |-
           Specifying tags for this extension allows selecting the operation for specific README sections.
-          When specifying tags, both title and description have no effect.
-          Conversely, if the tags array is not provided, the operation will appear in the main SDK Example Usage Section
-          and its relative positioning can be set using the position attribute
+          If the "tags" array is not provided or if it contains the tag "usage", a usage snippet associated
+          with the operation will be inserted in the main "SDK Example Usage" section. In this case a "title"
+          and "description" can be provided for this example and its relative positioning can be set through
+          the "position" attribute. "title", "description" and "position" have no effect for other tags.
         tags:
-          - servers  # Server Selection
+          - server  # Server Selection
           - security # Authentication
       tags:
         - ingredients
@@ -274,9 +275,22 @@ paths:
       tags:
         - config
       x-speakeasy-usage-example:
+        title: "Subscribe to webhooks to receive stock updates"
+        position: 3
         tags:
+          - usage    # SDK Example Usage
           - retries  # Retries
           - errors   # Error Handling
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10 # 10 ms
+          maxInterval: 200 # 200 ms
+          maxElapsedTime: 1000 # 1 seconds
+          exponent: 1.5
+        statusCodes:
+          - 404
+        retryConnectionErrors: false
       requestBody:
         required: true
         content:
@@ -295,6 +309,8 @@ paths:
       responses:
         "200":
           description: The webhook was subscribed to successfully.
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "5XX":
           $ref: "#/components/responses/APIError"
         default:
@@ -334,9 +350,25 @@ components:
           type: string
         message:
           type: string
+          x-speakeasy-error-message: true
         details:
           type: object
           additionalProperties: true
+    BadRequest:
+      type: object
+      properties:
+        status_code:
+          type: number
+          description: HTTP status code
+          example: 400
+        error:
+          type: string
+          description: Contains an explanation of the status_code as defined in HTTP/1.1 standard (RFC 7231)
+          example: Bad Request
+        type_name:
+          type: string
+          description: The type of error returned
+          example: RequestValidationError
     Error:
       type: object
       properties:
@@ -481,6 +513,12 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/APIError"
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/BadRequest"
     UnknownError:
       description: An unknown error occurred interacting with the API.
       content:
