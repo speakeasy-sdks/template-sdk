@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ### Sign in
 
 First you need to send an authentication request to the API by providing your username and password.
@@ -76,4 +76,4 @@ if res.order is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

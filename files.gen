@@ -39,7 +39,6 @@ src/speakeasybar/models/operations/__init__.py
 src/speakeasybar/models/shared/__init__.py
 src/speakeasybar/models/callbacks/__init__.py
 src/speakeasybar/models/webhooks/__init__.py
-USAGE.md
 docs/models/operations/loginsecurity.md
 docs/models/operations/type.md
 docs/models/operations/loginrequestbody.md
@@ -79,4 +78,5 @@ docs/sdks/drinks/README.md
 docs/sdks/ingredients/README.md
 docs/sdks/orders/README.md
 docs/sdks/config/README.md
+USAGE.md
 .gitattributes
