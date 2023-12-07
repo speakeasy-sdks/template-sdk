@@ -12,6 +12,7 @@ src/speakeasybar/utils/__init__.py
 src/speakeasybar/utils/retries.py
 src/speakeasybar/utils/utils.py
 src/speakeasybar/models/errors/sdkerror.py
+tests/helpers.py
 src/speakeasybar/models/operations/login.py
 src/speakeasybar/models/operations/getdrink.py
 src/speakeasybar/models/operations/listdrinks.py
@@ -30,6 +31,7 @@ src/speakeasybar/models/shared/security.py
 src/speakeasybar/models/shared/ingredient_input.py
 src/speakeasybar/models/shared/drink_input.py
 src/speakeasybar/models/errors/apierror.py
+src/speakeasybar/models/errors/badrequest.py
 src/speakeasybar/models/callbacks/createorder.py
 src/speakeasybar/models/webhooks/stockupdate.py
 src/speakeasybar/models/__init__.py
@@ -38,7 +40,6 @@ src/speakeasybar/models/operations/__init__.py
 src/speakeasybar/models/shared/__init__.py
 src/speakeasybar/models/callbacks/__init__.py
 src/speakeasybar/models/webhooks/__init__.py
-USAGE.md
 docs/models/operations/loginsecurity.md
 docs/models/operations/type.md
 docs/models/operations/loginrequestbody.md
@@ -68,6 +69,7 @@ docs/models/shared/security.md
 docs/models/shared/ingredientinput.md
 docs/models/shared/drinkinput.md
 docs/models/errors/apierror.md
+docs/models/errors/badrequest.md
 docs/models/callbacks/createorderorderupdateresponse.md
 docs/models/callbacks/createorderorderupdaterequestbody.md
 docs/models/webhooks/stockupdateresponse.md
@@ -77,5 +79,7 @@ docs/sdks/authentication/README.md
 docs/sdks/drinks/README.md
 docs/sdks/ingredients/README.md
 docs/sdks/orders/README.md
+docs/models/utils/retryconfig.md
 docs/sdks/config/README.md
+USAGE.md
 .gitattributes

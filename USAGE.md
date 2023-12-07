@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ### Sign in
 
 First you need to send an authentication request to the API by providing your username and password.
@@ -76,4 +76,27 @@ if res.order is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+
+### Subscribe to webhooks to receive stock updates
+
+```python
+import speakeasybar
+from speakeasybar.models import operations, shared
+
+s = speakeasybar.Speakeasybar(
+    security=shared.Security(
+        api_key="<YOUR_API_KEY>",
+    ),
+)
+
+req = [
+    operations.RequestBody(),
+]
+
+res = s.config.subscribe_to_webhooks(req)
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+<!-- End SDK Example Usage [usage] -->

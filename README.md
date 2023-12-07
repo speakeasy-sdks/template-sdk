@@ -55,16 +55,17 @@ servers:
 
 Once you're finished iterating and happy with the output push only the latest version of spec into the repo and regenerate the SDK using step 6 above.
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 pip install git+https://github.com/speakeasy-sdks/template-sdk.git
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Sign in
 
 First you need to send an authentication request to the API by providing your username and password.
@@ -142,11 +143,33 @@ if res.order is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
 
-<!-- Start SDK Available Operations -->
+### Subscribe to webhooks to receive stock updates
+
+```python
+import speakeasybar
+from speakeasybar.models import operations, shared
+
+s = speakeasybar.Speakeasybar(
+    security=shared.Security(
+        api_key="<YOUR_API_KEY>",
+    ),
+)
+
+req = [
+    operations.RequestBody(),
+]
+
+res = s.config.subscribe_to_webhooks(req)
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+<!-- End SDK Example Usage [usage] -->
+
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [authentication](docs/sdks/authentication/README.md)
 
@@ -168,11 +191,11 @@ if res.order is not None:
 ### [config](docs/sdks/config/README.md)
 
 * [subscribe_to_webhooks](docs/sdks/config/README.md#subscribe_to_webhooks) - Subscribe to webhooks.
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Retries -->
+<!-- Start Retries [retries] -->
 ## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
@@ -181,6 +204,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```python
 import speakeasybar
 from speakeasybar.models import operations, shared
+from speakeasybar.utils import BackoffStrategy, RetryConfig
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -192,7 +216,8 @@ req = [
     operations.RequestBody(),
 ]
 
-res = s.config.subscribe_to_webhooks(req)
+res = s.config.subscribe_to_webhooks(req,
+    RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
 
 if res.status_code == 200:
     # handle response
@@ -203,6 +228,7 @@ If you'd like to override the default retry strategy for all operations that sup
 ```python
 import speakeasybar
 from speakeasybar.models import operations, shared
+from speakeasybar.utils import BackoffStrategy, RetryConfig
 
 s = speakeasybar.Speakeasybar(
     retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
@@ -221,19 +247,20 @@ if res.status_code == 200:
     # handle response
     pass
 ```
-<!-- End Retries -->
+<!-- End Retries [retries] -->
 
 
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
 
-| Error Object     | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| errors.APIError  | 5XX              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| Error Object      | Status Code       | Content Type      |
+| ----------------- | ----------------- | ----------------- |
+| errors.BadRequest | 400               | application/json  |
+| errors.APIError   | 5XX               | application/json  |
+| errors.SDKError   | 400-600           | */*               |
 
 ### Example
 
@@ -254,23 +281,25 @@ req = [
 res = None
 try:
     res = s.config.subscribe_to_webhooks(req)
-
-except (errors.APIError) as e:
-    print(e) # handle exception
-except (errors.SDKError) as e:
-    print(e) # handle exception
-
+except errors.BadRequest as e:
+    print(e)  # handle exception
+    raise(e)
+except errors.APIError as e:
+    print(e)  # handle exception
+    raise(e)
+except errors.SDKError as e:
+    print(e)  # handle exception
+    raise(e)
 
 if res.status_code == 200:
     # handle response
     pass
 ```
-
-<!-- End Error Handling -->
-
+<!-- End Error Handling [errors] -->
 
 
-<!-- Start Server Selection -->
+
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Name
@@ -282,26 +311,26 @@ You can override the default server globally by passing a server name to the `se
 | `prod` | `https://speakeasy.bar` | None |
 | `staging` | `https://staging.speakeasy.bar` | None |
 | `customer` | `https://{organization}.{environment}.speakeasy.bar` | `environment` (default is `prod`), `organization` (default is `api`) |
+
 #### Example
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations
+from speakeasybar.models import operations, shared
 
 s = speakeasybar.Speakeasybar(
     server="customer",
+    security=shared.Security(
+        api_key="<YOUR_API_KEY>",
+    ),
 )
 
-req = operations.LoginRequestBody(
-    type=operations.Type.API_KEY,
-)
 
-res = s.authentication.login(req, operations.LoginSecurity(
-    password="<PASSWORD>",
-    username="<USERNAME>",
-))
+res = s.ingredients.list_ingredients(ingredients=[
+    'string',
+])
 
-if res.object is not None:
+if res.classes is not None:
     # handle response
     pass
 ```
@@ -317,22 +346,21 @@ Some of the server options above contain variables. If you want to set the value
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 import speakeasybar
-from speakeasybar.models import operations
+from speakeasybar.models import operations, shared
 
 s = speakeasybar.Speakeasybar(
     server_url="https://speakeasy.bar",
+    security=shared.Security(
+        api_key="<YOUR_API_KEY>",
+    ),
 )
 
-req = operations.LoginRequestBody(
-    type=operations.Type.API_KEY,
-)
 
-res = s.authentication.login(req, operations.LoginSecurity(
-    password="<PASSWORD>",
-    username="<USERNAME>",
-))
+res = s.ingredients.list_ingredients(ingredients=[
+    'string',
+])
 
-if res.object is not None:
+if res.classes is not None:
     # handle response
     pass
 ```
@@ -357,11 +385,11 @@ if res.classes is not None:
     # handle response
     pass
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
 The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
@@ -375,12 +403,11 @@ http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
 s = speakeasybar.Speakeasybar(client: http_client)
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Authentication -->
-
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -418,24 +445,24 @@ if res.classes is not None:
 Some operations in this SDK require the security scheme to be specified at the request level. For example:
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import operations
 
-s = speakeasybar.Speakeasybar(
-    security=shared.Security(
-        api_key="<YOUR_API_KEY>",
-    ),
+s = speakeasybar.Speakeasybar()
+
+req = operations.LoginRequestBody(
+    type=operations.Type.API_KEY,
 )
 
+res = s.authentication.login(req, operations.LoginSecurity(
+    password="<PASSWORD>",
+    username="<USERNAME>",
+))
 
-res = s.ingredients.list_ingredients(ingredients=[
-    'string',
-])
-
-if res.classes is not None:
+if res.object is not None:
     # handle response
     pass
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
