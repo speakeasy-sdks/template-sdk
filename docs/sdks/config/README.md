@@ -49,4 +49,4 @@ if res.status_code == 200:
 | ----------------- | ----------------- | ----------------- |
 | errors.BadRequest | 400               | application/json  |
 | errors.APIError   | 5XX               | application/json  |
-| errors.SDKError   | 400-600           | */*               |
+| errors.SDKError   | 4x-5xx            | */*               |
