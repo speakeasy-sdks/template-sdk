@@ -18,7 +18,7 @@ Get a drink by name, if authenticated this will include stock levels and product
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -59,7 +59,7 @@ Get a list of drinks, if authenticated this will include stock levels and produc
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(

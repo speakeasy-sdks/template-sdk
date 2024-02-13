@@ -32,7 +32,7 @@ For example, you can filter the list of available drinks by type.
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -55,7 +55,7 @@ This URL will get called whenever the supplier updates the status of your order.
 
 ```python
 import speakeasybar
-from speakeasybar.models import callbacks, operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(

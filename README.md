@@ -99,7 +99,7 @@ For example, you can filter the list of available drinks by type.
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -122,7 +122,7 @@ This URL will get called whenever the supplier updates the status of your order.
 
 ```python
 import speakeasybar
-from speakeasybar.models import callbacks, operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -266,7 +266,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import errors, operations, shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -282,13 +282,13 @@ res = None
 try:
     res = s.config.subscribe_to_webhooks(req)
 except errors.BadRequest as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 except errors.APIError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 except errors.SDKError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 
 if res.status_code == 200:
@@ -316,7 +316,7 @@ You can override the default server globally by passing a server name to the `se
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     server="customer",
@@ -346,7 +346,7 @@ Some of the server options above contain variables. If you want to set the value
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     server_url="https://speakeasy.bar",
@@ -370,7 +370,7 @@ if res.classes is not None:
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -422,7 +422,7 @@ This SDK supports the following security schemes globally:
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(

@@ -43,9 +43,9 @@ class Speakeasybar:
         :param security: The security details required for authentication
         :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param environment: Allows setting the environment variable for url substitution
-        :type environment: ServerEnvironmentmodels.ServerEnvironment
+        :type environment: ServerEnvironment
         :param organization: Allows setting the organization variable for url substitution
-        :type organization: 
+        :type organization: str
         :param server: The server by name to use for all operations
         :type server: str
         :param server_url: The server URL to use for all operations
@@ -63,6 +63,7 @@ class Speakeasybar:
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
+
         server_defaults = {
             'prod': {
             },

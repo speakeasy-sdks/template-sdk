@@ -17,7 +17,7 @@ Create an order for a drink.
 
 ```python
 import speakeasybar
-from speakeasybar.models import callbacks, operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(

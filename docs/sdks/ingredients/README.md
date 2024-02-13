@@ -17,7 +17,7 @@ Get a list of ingredients, if authenticated this will include stock levels and p
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(

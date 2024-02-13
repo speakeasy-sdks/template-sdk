@@ -4,9 +4,9 @@ management:
   docChecksum: f22d50ed7aa4956c14ae35514eb114c1
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.250.12
-  releaseVersion: 4.0.0
-  configChecksum: e6f044f7e221a528f207dbdf12ad7ea9
+  generationVersion: 2.253.0
+  releaseVersion: 4.0.1
+  configChecksum: 3b1a510502db8367bc61e60e5ee6ce56
   repoURL: https://github.com/speakeasy-sdks/template-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/template-sdk.git
@@ -18,7 +18,7 @@ features:
     flattening: 2.81.1
     globalSecurity: 2.83.2
     globalServerURLs: 2.82.1
-    inputOutputModels: 2.83.0
+    inputOutputModels: 2.83.1
     methodSecurity: 2.82.1
     methodServerURLs: 2.82.1
     retries: 2.82.1
