@@ -4,15 +4,15 @@ management:
   docChecksum: f22d50ed7aa4956c14ae35514eb114c1
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.253.0
-  releaseVersion: 4.0.1
-  configChecksum: 3b1a510502db8367bc61e60e5ee6ce56
+  generationVersion: 2.258.2
+  releaseVersion: 4.0.2
+  configChecksum: e100dfdc3c615d0b07d0ee9858345cc8
   repoURL: https://github.com/speakeasy-sdks/template-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/template-sdk.git
 features:
   python:
-    core: 4.4.5
+    core: 4.4.6
     errors: 2.81.8
     examples: 2.81.3
     flattening: 2.81.1

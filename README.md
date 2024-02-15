@@ -137,7 +137,7 @@ res = s.orders.create_order(request_body=[
         quantity=26535,
         type=shared.OrderType.DRINK,
     ),
-], callback_url='string')
+], callback_url='<value>')
 
 if res.order is not None:
     # handle response
@@ -327,7 +327,7 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'string',
+    '<value>',
 ])
 
 if res.classes is not None:
@@ -357,7 +357,7 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'string',
+    '<value>',
 ])
 
 if res.classes is not None:
@@ -432,7 +432,7 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'string',
+    '<value>',
 ])
 
 if res.classes is not None:
