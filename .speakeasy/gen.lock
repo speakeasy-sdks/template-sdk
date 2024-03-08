@@ -3,17 +3,17 @@ id: 463c131b-53b7-4e8c-b4de-cf4f7ff95e4d
 management:
   docChecksum: f22d50ed7aa4956c14ae35514eb114c1
   docVersion: 1.0.0
-  speakeasyVersion: internal
-  generationVersion: 2.275.4
-  releaseVersion: 4.1.0
-  configChecksum: 84bce9df2fdced0a82c45460b0b0860b
+  speakeasyVersion: 1.204.1
+  generationVersion: 2.279.1
+  releaseVersion: 4.2.0
+  configChecksum: 8b4270c1fefd41b1d8b3ef89dfd2bcf2
   repoURL: https://github.com/speakeasy-sdks/template-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/template-sdk.git
 features:
   python:
     callbacks: 1.0.0
-    core: 4.5.0
+    core: 4.5.1
     errors: 2.81.8
     examples: 2.81.3
     flattening: 2.81.1
@@ -22,6 +22,7 @@ features:
     inputOutputModels: 2.83.1
     methodSecurity: 2.82.1
     methodServerURLs: 2.82.1
+    responseFormat: 0.1.0
     retries: 2.82.1
     serverIDs: 2.81.1
     webhooks: 1.0.0
@@ -33,6 +34,7 @@ generatedFiles:
   - src/speakeasybar/orders.py
   - src/speakeasybar/config.py
   - src/speakeasybar/sdk.py
+  - py.typed
   - pylintrc
   - setup.py
   - src/speakeasybar/__init__.py

@@ -33,6 +33,7 @@ res = s.ingredients.list_ingredients(ingredients=[
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

@@ -37,6 +37,7 @@ res = s.orders.create_order(request_body=[
 if res.order is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

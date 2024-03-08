@@ -23,6 +23,7 @@ res = s.authentication.login(req, operations.LoginSecurity(
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Browse available drinks
@@ -46,6 +47,7 @@ res = s.drinks.list_drinks(drink_type=shared.DrinkType.SPIRIT)
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 ### Create an order
@@ -75,6 +77,7 @@ res = s.orders.create_order(request_body=[
 if res.order is not None:
     # handle response
     pass
+
 ```
 
 ### Subscribe to webhooks to receive stock updates
@@ -95,8 +98,9 @@ req = [
 
 res = s.config.subscribe_to_webhooks(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->

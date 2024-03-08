@@ -33,6 +33,7 @@ res = s.authentication.login(req, operations.LoginSecurity(
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
