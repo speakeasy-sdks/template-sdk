@@ -10,7 +10,7 @@ from .sdkconfiguration import SDKConfiguration, ServerEnvironment
 from speakeasybar import utils
 from speakeasybar._hooks import SDKHooks
 from speakeasybar.models import shared
-from typing import Callable, Dict, Union
+from typing import Callable, Dict, Optional, Union
 
 class Speakeasybar:
     r"""The Speakeasy Bar: A bar that serves drinks.
@@ -33,14 +33,14 @@ class Speakeasybar:
                  security: Union[shared.Security,Callable[[], shared.Security]] = None,
                  environment: ServerEnvironment = None,
                  organization: str = None,
-                 server: str = None,
-                 server_url: str = None,
-                 url_params: Dict[str, str] = None,
-                 client: requests_http.Session = None,
-                 retry_config: utils.RetryConfig = None
+                 server: Optional[str] = None,
+                 server_url: Optional[str] = None,
+                 url_params: Optional[Dict[str, str]] = None,
+                 client: Optional[requests_http.Session] = None,
+                 retry_config: Optional[utils.RetryConfig] = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
-        
+
         :param security: The security details required for authentication
         :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param environment: Allows setting the environment variable for url substitution
@@ -60,7 +60,7 @@ class Speakeasybar:
         """
         if client is None:
             client = requests_http.Session()
-        
+
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
@@ -76,7 +76,14 @@ class Speakeasybar:
             },
         }
 
-        self.sdk_configuration = SDKConfiguration(client, security, server_url, server, server_defaults, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(
+            client,
+            security,
+            server_url,
+            server,
+            server_defaults,
+            retry_config=retry_config
+        )
 
         hooks = SDKHooks()
 
@@ -86,14 +93,14 @@ class Speakeasybar:
             self.sdk_configuration.server_url = server_url
 
         # pylint: disable=protected-access
-        self.sdk_configuration._hooks=hooks
-       
+        self.sdk_configuration._hooks = hooks
+
         self._init_sdks()
-    
+
+
     def _init_sdks(self):
         self.authentication = Authentication(self.sdk_configuration)
         self.drinks = Drinks(self.sdk_configuration)
         self.ingredients = Ingredients(self.sdk_configuration)
         self.orders = Orders(self.sdk_configuration)
         self.config = Config(self.sdk_configuration)
-    
