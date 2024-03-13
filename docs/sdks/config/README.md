@@ -27,9 +27,10 @@ req = [
 
 res = s.config.subscribe_to_webhooks(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -49,4 +50,4 @@ if res.status_code == 200:
 | ----------------- | ----------------- | ----------------- |
 | errors.BadRequest | 400               | application/json  |
 | errors.APIError   | 5XX               | application/json  |
-| errors.SDKError   | 400-600           | */*               |
+| errors.SDKError   | 4x-5xx            | */*               |

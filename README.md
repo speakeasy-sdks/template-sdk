@@ -90,6 +90,7 @@ res = s.authentication.login(req, operations.LoginSecurity(
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Browse available drinks
@@ -99,7 +100,7 @@ For example, you can filter the list of available drinks by type.
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -113,6 +114,7 @@ res = s.drinks.list_drinks(drink_type=shared.DrinkType.SPIRIT)
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 ### Create an order
@@ -122,7 +124,7 @@ This URL will get called whenever the supplier updates the status of your order.
 
 ```python
 import speakeasybar
-from speakeasybar.models import callbacks, operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -137,11 +139,12 @@ res = s.orders.create_order(request_body=[
         quantity=26535,
         type=shared.OrderType.DRINK,
     ),
-], callback_url='string')
+], callback_url='<value>')
 
 if res.order is not None:
     # handle response
     pass
+
 ```
 
 ### Subscribe to webhooks to receive stock updates
@@ -162,9 +165,10 @@ req = [
 
 res = s.config.subscribe_to_webhooks(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -198,9 +202,9 @@ if res.status_code == 200:
 <!-- Start Retries [retries] -->
 ## Retries
 
-Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
-To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
 import speakeasybar
 from speakeasybar.models import operations, shared
@@ -219,12 +223,13 @@ req = [
 res = s.config.subscribe_to_webhooks(req,
     RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
-If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
 import speakeasybar
 from speakeasybar.models import operations, shared
@@ -243,9 +248,10 @@ req = [
 
 res = s.config.subscribe_to_webhooks(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End Retries [retries] -->
 
@@ -260,13 +266,13 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | ----------------- | ----------------- | ----------------- |
 | errors.BadRequest | 400               | application/json  |
 | errors.APIError   | 5XX               | application/json  |
-| errors.SDKError   | 400-600           | */*               |
+| errors.SDKError   | 4x-5xx            | */*               |
 
 ### Example
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import errors, operations, shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -282,18 +288,19 @@ res = None
 try:
     res = s.config.subscribe_to_webhooks(req)
 except errors.BadRequest as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 except errors.APIError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 except errors.SDKError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End Error Handling [errors] -->
 
@@ -316,7 +323,7 @@ You can override the default server globally by passing a server name to the `se
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     server="customer",
@@ -327,12 +334,13 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'string',
+    '<value>',
 ])
 
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 #### Variables
@@ -346,7 +354,7 @@ Some of the server options above contain variables. If you want to set the value
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     server_url="https://speakeasy.bar",
@@ -357,12 +365,13 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'string',
+    '<value>',
 ])
 
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 ### Override Server URL Per-Operation
@@ -370,7 +379,7 @@ if res.classes is not None:
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -384,6 +393,7 @@ res = s.drinks.list_drinks(server_url="https://speakeasy.bar", drink_type=shared
 if res.classes is not None:
     # handle response
     pass
+
 ```
 <!-- End Server Selection [server] -->
 
@@ -392,7 +402,7 @@ if res.classes is not None:
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+The Python SDK makes API calls using the [requests](https://pypi.org/project/requests/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
@@ -422,7 +432,7 @@ This SDK supports the following security schemes globally:
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -432,12 +442,13 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'string',
+    '<value>',
 ])
 
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 ### Per-Operation Security Schemes
@@ -461,6 +472,7 @@ res = s.authentication.login(req, operations.LoginSecurity(
 if res.object is not None:
     # handle response
     pass
+
 ```
 <!-- End Authentication [security] -->
 

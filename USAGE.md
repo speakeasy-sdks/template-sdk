@@ -23,6 +23,7 @@ res = s.authentication.login(req, operations.LoginSecurity(
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Browse available drinks
@@ -32,7 +33,7 @@ For example, you can filter the list of available drinks by type.
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -46,6 +47,7 @@ res = s.drinks.list_drinks(drink_type=shared.DrinkType.SPIRIT)
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 ### Create an order
@@ -55,7 +57,7 @@ This URL will get called whenever the supplier updates the status of your order.
 
 ```python
 import speakeasybar
-from speakeasybar.models import callbacks, operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -70,11 +72,12 @@ res = s.orders.create_order(request_body=[
         quantity=26535,
         type=shared.OrderType.DRINK,
     ),
-], callback_url='string')
+], callback_url='<value>')
 
 if res.order is not None:
     # handle response
     pass
+
 ```
 
 ### Subscribe to webhooks to receive stock updates
@@ -95,8 +98,9 @@ req = [
 
 res = s.config.subscribe_to_webhooks(req)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->

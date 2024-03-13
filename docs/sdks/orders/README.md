@@ -17,7 +17,7 @@ Create an order for a drink.
 
 ```python
 import speakeasybar
-from speakeasybar.models import callbacks, operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -32,11 +32,12 @@ res = s.orders.create_order(request_body=[
         quantity=26535,
         type=shared.OrderType.DRINK,
     ),
-], callback_url='string')
+], callback_url='<value>')
 
 if res.order is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -55,4 +56,4 @@ if res.order is not None:
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.APIError  | 5XX              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| errors.SDKError  | 4x-5xx           | */*              |

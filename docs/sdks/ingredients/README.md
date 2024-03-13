@@ -17,7 +17,7 @@ Get a list of ingredients, if authenticated this will include stock levels and p
 
 ```python
 import speakeasybar
-from speakeasybar.models import operations, shared
+from speakeasybar.models import shared
 
 s = speakeasybar.Speakeasybar(
     security=shared.Security(
@@ -27,12 +27,13 @@ s = speakeasybar.Speakeasybar(
 
 
 res = s.ingredients.list_ingredients(ingredients=[
-    'string',
+    '<value>',
 ])
 
 if res.classes is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -50,4 +51,4 @@ if res.classes is not None:
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.APIError  | 5XX              | application/json |
-| errors.SDKError  | 400-600          | */*              |
+| errors.SDKError  | 4x-5xx           | */*              |
