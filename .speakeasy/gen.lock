@@ -3,21 +3,21 @@ id: 463c131b-53b7-4e8c-b4de-cf4f7ff95e4d
 management:
   docChecksum: f22d50ed7aa4956c14ae35514eb114c1
   docVersion: 1.0.0
-  speakeasyVersion: 1.207.1
-  generationVersion: 2.280.6
-  releaseVersion: 4.2.1
-  configChecksum: e87ed00f5cc6a32a5eaf235df776da2f
+  speakeasyVersion: 1.227.0
+  generationVersion: 2.291.0
+  releaseVersion: 4.2.2
+  configChecksum: 3ee0e124823d841af1e6fc1dc727fa6b
   repoURL: https://github.com/speakeasy-sdks/template-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/template-sdk.git
 features:
   python:
     callbacks: 1.0.0
-    core: 4.5.1
+    core: 4.5.2
     errors: 2.81.8
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.83.4
+    globalSecurity: 2.83.5
     globalServerURLs: 2.82.2
     inputOutputModels: 2.83.1
     methodSecurity: 2.82.1
