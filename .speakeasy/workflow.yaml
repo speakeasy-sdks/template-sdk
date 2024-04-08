@@ -1,0 +1,9 @@
+workflowVersion: 1.0.0
+sources:
+    my-source:
+        inputs:
+            - location: ./openapi.yaml
+targets:
+    python-template:
+        target: python
+        source: my-source

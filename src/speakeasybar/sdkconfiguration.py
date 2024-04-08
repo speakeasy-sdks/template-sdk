@@ -8,7 +8,7 @@ from .utils.retries import RetryConfig
 from dataclasses import dataclass, field
 from enum import Enum
 from speakeasybar.models import shared
-from typing import Callable, Dict, Tuple, Union
+from typing import Callable, Dict, Optional, Tuple, Union
 
 
 SERVER_PROD = 'prod'
@@ -36,24 +36,24 @@ class ServerEnvironment(str, Enum):
 class SDKConfiguration:
     client: requests_http.Session
     security: Union[shared.Security,Callable[[], shared.Security]] = None
-    server_url: str = ''
-    server: str = ''
+    server_url: Optional[str] = ''
+    server: Optional[str] = ''
     server_defaults: Dict[str, Dict[str, str]] = field(default_factory=Dict)
     language: str = 'python'
     openapi_doc_version: str = '1.0.0'
-    sdk_version: str = '4.2.1'
-    gen_version: str = '2.280.6'
-    user_agent: str = 'speakeasy-sdk/python 4.2.1 2.280.6 1.0.0 speakeasybar'
-    retry_config: RetryConfig = None
-    _hooks: SDKHooks = None
+    sdk_version: str = '4.3.1'
+    gen_version: str = '2.300.0'
+    user_agent: str = 'speakeasy-sdk/python 4.3.1 2.300.0 1.0.0 speakeasybar'
+    retry_config: Optional[RetryConfig] = None
+    _hooks: Optional[SDKHooks] = None
 
     def get_server_details(self) -> Tuple[str, Dict[str, str]]:
-        if self.server_url:
+        if self.server_url is not None and self.server_url != '':
             return utils.remove_suffix(self.server_url, '/'), {}
         if not self.server:
             self.server = SERVER_PROD
 
-        if not self.server in SERVERS:
+        if self.server not in SERVERS:
             raise ValueError(f"Invalid server \"{self.server}\"")
 
         return SERVERS[self.server], self.server_defaults.get(self.server, {})

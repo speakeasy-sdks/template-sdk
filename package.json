@@ -1,0 +1,36 @@
+{
+  "type": "commonjs",
+  "name": "openapi",
+  "version": "0.0.1",
+  "author": "Speakeasy",
+  "main": "./index.js",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/speakeasy-sdks/template-sdk.git"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./cjs/index.js",
+    "./*.js": "./cjs/*.js",
+    "./*": "./cjs/*/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build && cp -r src/. cjs/. ./"
+  },
+  "keywords": [],
+  "peerDependencies": {
+    "zod": ">= 3"
+  },
+  "devDependencies": {
+    "@tsconfig/strictest": "^2.0.2",
+    "@types/jsonpath": "^0.2.3",
+    "typescript": "^5.2.2",
+    "zod": "^3.22.2"
+  },
+  "dependencies": {
+    "decimal.js": "^10.4.3",
+    "jsonpath": "^1.1.1"
+  }
+}

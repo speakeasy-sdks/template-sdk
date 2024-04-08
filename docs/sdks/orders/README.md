@@ -56,4 +56,4 @@ if res.order is not None:
 | Error Object     | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.APIError  | 5XX              | application/json |
-| errors.SDKError  | 4x-5xx           | */*              |
+| errors.SDKError  | 4xx-5xx          | */*              |

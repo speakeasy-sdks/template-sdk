@@ -7,6 +7,7 @@ from .drinks import Drinks
 from .ingredients import Ingredients
 from .orders import Orders
 from .sdkconfiguration import SDKConfiguration, ServerEnvironment
+from .utils.retries import RetryConfig
 from speakeasybar import utils
 from speakeasybar._hooks import SDKHooks
 from speakeasybar.models import shared
@@ -37,7 +38,7 @@ class Speakeasybar:
                  server_url: Optional[str] = None,
                  url_params: Optional[Dict[str, str]] = None,
                  client: Optional[requests_http.Session] = None,
-                 retry_config: Optional[utils.RetryConfig] = None
+                 retry_config: Optional[RetryConfig] = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
 
@@ -56,7 +57,7 @@ class Speakeasybar:
         :param client: The requests.Session HTTP client to use for all operations
         :type client: requests_http.Session
         :param retry_config: The utils.RetryConfig to use globally
-        :type retry_config: utils.RetryConfig
+        :type retry_config: RetryConfig
         """
         if client is None:
             client = requests_http.Session()
