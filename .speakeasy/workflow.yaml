@@ -1,8 +1,11 @@
 workflowVersion: 1.0.0
+speakeasyVersion: latest
 sources:
     my-source:
         inputs:
             - location: ./openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/openapi-example/openapi-example/my-source
 targets:
     python-template:
         target: python

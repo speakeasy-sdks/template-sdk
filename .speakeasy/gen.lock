@@ -3,27 +3,30 @@ id: 463c131b-53b7-4e8c-b4de-cf4f7ff95e4d
 management:
   docChecksum: f22d50ed7aa4956c14ae35514eb114c1
   docVersion: 1.0.0
-  speakeasyVersion: 1.241.0
-  generationVersion: 2.300.0
-  releaseVersion: 4.3.1
-  configChecksum: 8cc801290c7c0e0dc5bc4c0e07273959
+  speakeasyVersion: 1.313.1
+  generationVersion: 2.347.8
+  releaseVersion: 4.4.0
+  configChecksum: b52b914035b5c023c16c1f1e5b3c00bd
   repoURL: https://github.com/speakeasy-sdks/template-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/template-sdk.git
 features:
   python:
+    additionalDependencies: 0.1.0
     callbacks: 1.0.0
-    core: 4.6.3
-    errors: 2.81.8
+    core: 4.6.12
+    errors: 2.81.10
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.83.5
+    globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.2
     inputOutputModels: 2.83.1
     methodSecurity: 2.82.1
     methodServerURLs: 2.82.1
     responseFormat: 0.1.0
-    retries: 2.82.1
+    retries: 2.82.2
+    sdkHooks: 0.1.0
     serverIDs: 2.81.1
     webhooks: 1.0.0
 generatedFiles:
@@ -36,13 +39,13 @@ generatedFiles:
   - src/speakeasybar/sdk.py
   - py.typed
   - pylintrc
+  - scripts/publish.sh
   - setup.py
   - src/speakeasybar/__init__.py
   - src/speakeasybar/utils/__init__.py
   - src/speakeasybar/utils/retries.py
   - src/speakeasybar/utils/utils.py
   - src/speakeasybar/models/errors/sdkerror.py
-  - tests/helpers.py
   - src/speakeasybar/models/operations/login.py
   - src/speakeasybar/models/operations/getdrink.py
   - src/speakeasybar/models/operations/listdrinks.py

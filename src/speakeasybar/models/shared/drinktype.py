@@ -3,6 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
+
 class DrinkType(str, Enum):
     r"""The type of drink."""
     COCKTAIL = 'cocktail'

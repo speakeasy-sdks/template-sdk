@@ -7,6 +7,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from speakeasybar import utils
 
+
 class Status(str, Enum):
     r"""The status of the order."""
     PENDING = 'pending'

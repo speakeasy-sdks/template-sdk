@@ -76,6 +76,7 @@ class Speakeasybar:
                 'organization': organization or 'api',
             },
         }
+    
 
         self.sdk_configuration = SDKConfiguration(
             client,
@@ -94,7 +95,7 @@ class Speakeasybar:
             self.sdk_configuration.server_url = server_url
 
         # pylint: disable=protected-access
-        self.sdk_configuration._hooks = hooks
+        self.sdk_configuration.__dict__['_hooks'] = hooks
 
         self._init_sdks()
 

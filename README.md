@@ -78,11 +78,10 @@ from speakeasybar.models import operations
 
 s = speakeasybar.Speakeasybar()
 
-req = operations.LoginRequestBody(
-    type=operations.Type.API_KEY,
-)
 
-res = s.authentication.login(req, operations.LoginSecurity(
+res = s.authentication.login(request=operations.LoginRequestBody(
+    type=operations.Type.API_KEY,
+), security=operations.LoginSecurity(
     password="<PASSWORD>",
     username="<USERNAME>",
 ))
@@ -159,11 +158,10 @@ s = speakeasybar.Speakeasybar(
     ),
 )
 
-req = [
-    operations.RequestBody(),
-]
 
-res = s.config.subscribe_to_webhooks(req)
+res = s.config.subscribe_to_webhooks(request=[
+    operations.RequestBody(),
+])
 
 if res is not None:
     # handle response
@@ -216,11 +214,10 @@ s = speakeasybar.Speakeasybar(
     ),
 )
 
-req = [
-    operations.RequestBody(),
-]
 
-res = s.config.subscribe_to_webhooks(req,
+res = s.config.subscribe_to_webhooks(request=[
+    operations.RequestBody(),
+],
     RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
 
 if res is not None:
@@ -236,17 +233,16 @@ from speakeasybar.models import operations, shared
 from speakeasybar.utils import BackoffStrategy, RetryConfig
 
 s = speakeasybar.Speakeasybar(
-    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         api_key="<YOUR_API_KEY>",
     ),
 )
 
-req = [
-    operations.RequestBody(),
-]
 
-res = s.config.subscribe_to_webhooks(req)
+res = s.config.subscribe_to_webhooks(request=[
+    operations.RequestBody(),
+])
 
 if res is not None:
     # handle response
@@ -280,13 +276,12 @@ s = speakeasybar.Speakeasybar(
     ),
 )
 
-req = [
-    operations.RequestBody(),
-]
-
 res = None
 try:
-    res = s.config.subscribe_to_webhooks(req)
+    res = s.config.subscribe_to_webhooks(request=[
+    operations.RequestBody(),
+])
+
 except errors.BadRequest as e:
     # handle exception
     raise(e)
@@ -388,7 +383,7 @@ s = speakeasybar.Speakeasybar(
 )
 
 
-res = s.drinks.list_drinks(server_url="https://speakeasy.bar", drink_type=shared.DrinkType.SPIRIT)
+res = s.drinks.list_drinks(drink_type=shared.DrinkType.SPIRIT, server_url="https://speakeasy.bar")
 
 if res.classes is not None:
     # handle response
@@ -460,11 +455,10 @@ from speakeasybar.models import operations
 
 s = speakeasybar.Speakeasybar()
 
-req = operations.LoginRequestBody(
-    type=operations.Type.API_KEY,
-)
 
-res = s.authentication.login(req, operations.LoginSecurity(
+res = s.authentication.login(request=operations.LoginRequestBody(
+    type=operations.Type.API_KEY,
+), security=operations.LoginSecurity(
     password="<PASSWORD>",
     username="<USERNAME>",
 ))

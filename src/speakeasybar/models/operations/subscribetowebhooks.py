@@ -9,6 +9,7 @@ from enum import Enum
 from speakeasybar import utils
 from typing import Optional
 
+
 class Webhook(str, Enum):
     STOCK_UPDATE = 'stockUpdate'
 

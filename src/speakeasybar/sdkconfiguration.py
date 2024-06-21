@@ -25,6 +25,7 @@ SERVERS = {
 """Contains the list of servers available to the SDK"""
 
 
+
 class ServerEnvironment(str, Enum):
     r"""The environment name. Defaults to the production environment."""
     PROD = 'prod'
@@ -41,11 +42,13 @@ class SDKConfiguration:
     server_defaults: Dict[str, Dict[str, str]] = field(default_factory=Dict)
     language: str = 'python'
     openapi_doc_version: str = '1.0.0'
-    sdk_version: str = '4.3.1'
-    gen_version: str = '2.300.0'
-    user_agent: str = 'speakeasy-sdk/python 4.3.1 2.300.0 1.0.0 speakeasybar'
+    sdk_version: str = '4.4.0'
+    gen_version: str = '2.347.8'
+    user_agent: str = 'speakeasy-sdk/python 4.4.0 2.347.8 1.0.0 speakeasybar'
     retry_config: Optional[RetryConfig] = None
-    _hooks: Optional[SDKHooks] = None
+
+    def __post_init__(self):
+        self._hooks = SDKHooks()
 
     def get_server_details(self) -> Tuple[str, Dict[str, str]]:
         if self.server_url is not None and self.server_url != '':

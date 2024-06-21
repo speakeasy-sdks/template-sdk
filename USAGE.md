@@ -11,11 +11,10 @@ from speakeasybar.models import operations
 
 s = speakeasybar.Speakeasybar()
 
-req = operations.LoginRequestBody(
-    type=operations.Type.API_KEY,
-)
 
-res = s.authentication.login(req, operations.LoginSecurity(
+res = s.authentication.login(request=operations.LoginRequestBody(
+    type=operations.Type.API_KEY,
+), security=operations.LoginSecurity(
     password="<PASSWORD>",
     username="<USERNAME>",
 ))
@@ -92,11 +91,10 @@ s = speakeasybar.Speakeasybar(
     ),
 )
 
-req = [
-    operations.RequestBody(),
-]
 
-res = s.config.subscribe_to_webhooks(req)
+res = s.config.subscribe_to_webhooks(request=[
+    operations.RequestBody(),
+])
 
 if res is not None:
     # handle response
