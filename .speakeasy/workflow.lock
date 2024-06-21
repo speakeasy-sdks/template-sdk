@@ -1,0 +1,29 @@
+speakeasyVersion: 1.313.1
+sources:
+    my-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:b26c23d8cbc993f5ded4f61e07626a7ed8ae3a6ed6b0b1138281306a1ed85a08
+        sourceBlobDigest: sha256:639db1978db22dbfd275139e5511de46c975b0ddf833ed650d4559b2d1f220a5
+        tags:
+            - latest
+            - main
+targets:
+    python-template:
+        source: my-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:b26c23d8cbc993f5ded4f61e07626a7ed8ae3a6ed6b0b1138281306a1ed85a08
+        sourceBlobDigest: sha256:639db1978db22dbfd275139e5511de46c975b0ddf833ed650d4559b2d1f220a5
+        outLocation: /github/workspace/repo
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        my-source:
+            inputs:
+                - location: ./openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/openapi-example/openapi-example/my-source
+    targets:
+        python-template:
+            target: python
+            source: my-source

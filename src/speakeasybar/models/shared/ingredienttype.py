@@ -3,6 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
+
 class IngredientType(str, Enum):
     r"""The type of ingredient."""
     FRESH = 'fresh'

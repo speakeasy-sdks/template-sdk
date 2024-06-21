@@ -17,6 +17,7 @@ class LoginSecurity:
     
 
 
+
 class Type(str, Enum):
     API_KEY = 'apiKey'
     JWT = 'JWT'

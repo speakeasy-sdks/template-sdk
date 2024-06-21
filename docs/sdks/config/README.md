@@ -21,11 +21,10 @@ s = speakeasybar.Speakeasybar(
     ),
 )
 
-req = [
-    operations.RequestBody(),
-]
 
-res = s.config.subscribe_to_webhooks(req)
+res = s.config.subscribe_to_webhooks(request=[
+    operations.RequestBody(),
+])
 
 if res is not None:
     # handle response

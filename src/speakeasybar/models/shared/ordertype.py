@@ -3,6 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
+
 class OrderType(str, Enum):
     r"""The type of order."""
     DRINK = 'drink'
