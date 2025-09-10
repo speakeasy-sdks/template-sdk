@@ -4,6 +4,6 @@ sources:
         inputs:
             - location: ./openapi.yaml
 targets:
-    python-template:
-        target: python
+    go-template:
+        target: go
         source: my-source
